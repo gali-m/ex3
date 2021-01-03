@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/noaro/mtm/ex3/ex3/partA/date_wrap.cpp
+iostream
+-
+date_wrap.h
+/home/noaro/mtm/ex3/ex3/partA/date_wrap.h
+../provided/date.h
+/home/noaro/mtm/ex3/ex3/provided/date.h
+
+/home/noaro/mtm/ex3/ex3/partA/date_wrap.h
+iostream
+-
+../provided/date.h
+/home/noaro/mtm/ex3/ex3/provided/date.h
+
+/home/noaro/mtm/ex3/ex3/provided/date.h
+stdbool.h
+-
+

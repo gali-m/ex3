@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/noaro/mtm/ex3/ex3/provided/date.c
+stdlib.h
+-
+stdbool.h
+-
+date.h
+/home/noaro/mtm/ex3/ex3/provided/date.h
+
+/home/noaro/mtm/ex3/ex3/provided/date.h
+stdbool.h
+-
+

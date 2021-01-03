@@ -1,0 +1,1 @@
+/usr/local/bin/g++  -std=c++11 -Wall -Werror -pedantic-errors -o progA -IpartA -Iprovided provided/test_partA.cpp partA/*.cpp -Lprovided -ldate -g  -rdynamic CMakeFiles/progA.dir/provided/test_partA.cpp.o CMakeFiles/progA.dir/partA/date_wrap.cpp.o  -o progA 

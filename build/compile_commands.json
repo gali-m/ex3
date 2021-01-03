@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/noaro/mtm/ex3/ex3/build",
+  "command": "/usr/local/bin/gcc   -g   -o CMakeFiles/date.dir/provided/date.c.o   -c /home/noaro/mtm/ex3/ex3/provided/date.c",
+  "file": "/home/noaro/mtm/ex3/ex3/provided/date.c"
+}
+]
