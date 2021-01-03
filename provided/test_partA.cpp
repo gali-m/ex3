@@ -10,12 +10,12 @@ template <class T> void print(const T& x) { cout << x << endl; }
 int main() {
     DateWrap date(30, 11, 2020);
     std::cout << "Hello";
-    print(date);
+    // print(date);
     // print(date + 4);
     // print(3 + date);
-    // date++;
+    date++;
     // print(date);
-    // date += 7;
+    date += 7;
     // print(date);
     // print(date > DateWrap(29, 11, 2020));
     // print(date <= DateWrap(29, 11, 2020));
