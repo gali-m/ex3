@@ -29,7 +29,7 @@ namespace mtm {
         int get_day();
         int get_month();
         int get_year();
-        // friend std::ostream& operator<<(std::ostream& out, DateWrap const& date);
+        friend std::ostream& operator<<(std::ostream& out, DateWrap const& date);
     };
 }
 

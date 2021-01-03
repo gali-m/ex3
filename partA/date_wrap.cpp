@@ -35,10 +35,10 @@ int DateWrap::get_year()
 }
 
 // friend std::ostream& operator<<(std::ostream& out, DateWrap const& date);
-// friend std::ostream& DateWrap::operator<<(std::ostream& out, const DateWrap& date) {
-//     out << date.day << '/' << date.month << '/' << date.year;
-//     return out;
-// }
+friend std::ostream& DateWrap::operator<<(std::ostream& out, const DateWrap::DateWrap& date) {
+    out << date.day << '/' << date.month << '/' << date.year;
+    return out;
+}
 
 // class mtm::DateWrap{
 //     int day;
