@@ -17,6 +17,8 @@ namespace mtm
     //part B
     class AlreadyRegistered : public mtm::Exception {};
     class InvalidStudent : public mtm::Exception {};
+    class NotRegistered : public mtm::Exception {};
+
         
     // static func
     class StudentInList : public mtm::Exception {};

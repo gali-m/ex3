@@ -25,17 +25,16 @@ namespace mtm {
     
     public:
         BaseEvent(DateWrap date, std::string name);
-        ~BaseEvent();
 
         virtual void registerParticipant(student_node* student) = 0;
         virtual void unregisterParticipant(student_node* student);
-        virtual std::ostream printShort(std::ostream);
-        virtual std::ostream printLong(std::ostream);
-        virtual void clone();
+        virtual std::ostream& printShort(std::ostream& os);
+        virtual std::ostream& printLong(std::ostream& os);
+        virtual BaseEvent* clone();
 
     private:
         bool is_valid_student(student_node* student);
-        bool is_student_in_list(student_node* students_list, student_node* student);
+        // bool is_student_in_list(student_node* students_list, student_node* student);
     };
 
 }
