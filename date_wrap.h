@@ -7,17 +7,8 @@ extern "C" {
     #include "date.h"
 }
 
-namespace mtm {
-
-    // class DateWrap{
-    // public:
-    //     // DateWrap(int day, int month, int year);
-    //     int get_day();
-    //     // int get_month();
-    //     // int get_year();
-    //     // friend std::ostream& operator<<(std::ostream& out, DateWrap const& date);
-    // };
-
+namespace mtm 
+{
     class DateWrap{
     private:
         Date date;
@@ -26,24 +17,23 @@ namespace mtm {
 
     public:
         DateWrap(int day, int month, int year);
-        ~DateWrap();
         DateWrap(const DateWrap& date_wrap);
+        ~DateWrap();
 	    DateWrap& operator=(const DateWrap& date_wrap);
-        int get_day() const;
-        int get_month() const;
-        int get_year() const;
+        int day() const;
+        int month() const;
+        int year() const;
         bool operator==(const DateWrap& date_wrap);
-	    // friend std::ostream& operator<<(std::ostream& os, const DateWrap& date_wrap);
-        friend std::ostream& operator<<(std::ostream& os, const DateWrap& date_wrap);
-        bool operator>(const DateWrap& date);
-        bool operator<(const DateWrap& date);
-        bool operator>=(const DateWrap& date);
-        bool operator<=(const DateWrap& date);
-        bool operator!=(const DateWrap& date);
+        bool operator!=(const DateWrap& date_wrap);
+        bool operator>(const DateWrap& date_wrap);
+        bool operator<(const DateWrap& date_wrap);
+        bool operator>=(const DateWrap& date_wrap);
+        bool operator<=(const DateWrap& date_wrap);
         DateWrap operator++(int);
         DateWrap& operator+=(int days);
-        friend DateWrap operator+(const DateWrap& wrap_date, int days);
-        friend DateWrap operator+(int days, const DateWrap& wrap_date);
+        friend DateWrap operator+(const DateWrap& date_wrap, int days);
+        friend DateWrap operator+(int days, const DateWrap& date_wrap);
+        friend std::ostream& operator<<(std::ostream& os, const DateWrap& date_wrap);
     };
 }
 
