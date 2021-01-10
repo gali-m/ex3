@@ -7,35 +7,36 @@
 
 namespace mtm {
 
-    struct event_node
-    {
-        DateWrap date;
-        std::string name;
-        student_node* students_list;
-    };
-
     struct student_node
     {
         int student_id;
         student_node* next;
+
+        student_node(int student_id, student_node* next = NULL);
+        ~student_node();
+
+        friend class BaseEvent;
     };
 
     class BaseEvent{
-        event_node event;
+        DateWrap date;
+        std::string name;
+        student_node* students_list;
     
     public:
         BaseEvent(DateWrap date, std::string name);
+        ~BaseEvent();
 
-        virtual event_node registerParticipant(student_node* student);
-        virtual event_node unregisterParticipant(student_node* student);
+        virtual void registerParticipant(student_node* student) = 0;
+        virtual void unregisterParticipant(student_node* student);
         virtual std::ostream printShort(std::ostream);
         virtual std::ostream printLong(std::ostream);
-        virtual event_node* clone();
+        virtual void clone();
 
-        // TODO: one function that pure virtual "=0" for abstract class
-        virtual event_node* make_it_abstract() = 0;
-
-    }
+    private:
+        bool is_valid_student(student_node* student);
+        bool is_student_in_list(student_node* students_list, student_node* student);
+    };
 
 }
 
