@@ -4,7 +4,7 @@
 #include <iostream>
 
 extern "C" {
-    #include "../provided/date.h"
+    #include "date.h"
 }
 
 namespace mtm {
