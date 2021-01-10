@@ -6,10 +6,13 @@
 
 
 
-namespace mtm {
-
+namespace mtm 
+{
     class Exception : public std::exception {};
 
+    //part A
+    class InvalidDate : public mtm::Exception {};
+    class NegativeDays : public mtm::Exception {};
 
     //part B
     class AlreadyRegistered : public mtm::Exception {};
