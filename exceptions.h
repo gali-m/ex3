@@ -8,12 +8,15 @@
 
 namespace mtm {
 
-    class Exception : public std::exception {
-        class AlreadyRegistered {};
+    class Exception : public std::exception {};
 
 
-
-    }
+    //part B
+    class AlreadyRegistered : public mtm::Exception {};
+    class InvalidStudent : public mtm::Exception {};
+        
+    // static func
+    class StudentInList : public mtm::Exception {};
 }
 
 
