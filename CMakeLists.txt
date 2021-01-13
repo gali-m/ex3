@@ -34,5 +34,8 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 link_directories(.)
 
-add_executable(progA test_partA.cpp date_wrap.cpp date_wrap.h date.h)
+add_executable(progA test_partA.cpp date_wrap.cpp date_wrap.h date.h exceptions.h)
+target_link_libraries(progA libdate.a)
+
+add_executable(progB test_partB.cpp base_event.cpp base_event.h event_container.cpp event_container.h date_wrap.cpp date_wrap.h date.h exceptions.h)
 target_link_libraries(progA libdate.a)

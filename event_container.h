@@ -9,34 +9,40 @@ namespace mtm {
 
     struct event_node
     {
-        BaseEvent& event;
+        BaseEvent* event;
         event_node* next;
 
-        event_node(BaseEvent& event, event_node* next = NULL);
-        ~event_node();
+        event_node(BaseEvent* event = NULL, event_node* next = NULL);
+        event_node(const event_node& event_node);
 
+        friend class EventIterator;
         friend class EventContainer;
     };
 
 
     class EventContainer
     {
+        event_node* event_list;
+
+    public:
+
         class EventIterator
         {
             event_node* iterator;
 
+        public:
+
+            EventIterator(event_node* event);
             EventIterator(const EventIterator& event_iterator);
-            ~EventIterator();
 	        EventIterator& operator=(const EventIterator& event_iterator);
-            EventIterator operator++();
+            EventIterator& operator++();
             BaseEvent& operator*();
             bool operator==(const EventIterator& event_iterator);
             bool operator!=(const EventIterator& event_iterator);
+
+            friend class EventContainer;
         };
 
-        event_node* event_list;
-
-    public:
         EventContainer();
         ~EventContainer();
 
