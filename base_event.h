@@ -6,14 +6,19 @@
 #include "exceptions.h"
 
 namespace mtm {
+    
+    const int MAX_STUDENT_ID = 1234567890;
+    const int MIN_STUDENT_ID = 1;
 
-    struct student_node
+    struct StudentNode
     {
         int student_id;
-        student_node* next;
+        StudentNode* next;
 
-        student_node(int student_id, student_node* next = NULL);
-        ~student_node();
+        StudentNode(int student_id, StudentNode* next = NULL);
+        ~StudentNode();
+        StudentNode(const StudentNode& student_node);
+        StudentNode& operator+=(StudentNode* student);
 
         friend class BaseEvent;
     };
@@ -21,20 +26,24 @@ namespace mtm {
     class BaseEvent{
         DateWrap date;
         std::string name;
-        student_node* students_list;
+        StudentNode* students_list;
     
     public:
         BaseEvent(DateWrap date, std::string name);
+        virtual ~BaseEvent();
+        // BaseEvent(const BaseEvent&);
 
-        virtual void registerParticipant(student_node* student) = 0;
-        virtual void unregisterParticipant(student_node* student);
+        virtual void registerParticipant(StudentNode* student) = 0;
+        virtual void unregisterParticipant(StudentNode* student);
         virtual std::ostream& printShort(std::ostream& os);
         virtual std::ostream& printLong(std::ostream& os);
-        virtual BaseEvent* clone();
+        virtual BaseEvent* clone() = 0;
 
-    private:
-        bool is_valid_student(student_node* student);
-        // bool is_student_in_list(student_node* students_list, student_node* student);
+        friend class EventContainer;
+
+    protected:
+        bool is_valid_student(StudentNode* student);
+        bool is_student_in_list(StudentNode* students_list, StudentNode* student);
     };
 
 }
