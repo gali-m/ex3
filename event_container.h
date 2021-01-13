@@ -44,7 +44,7 @@ namespace mtm {
         };
 
         EventContainer();
-        ~EventContainer();
+        virtual ~EventContainer();
 
         virtual void add(BaseEvent& event) = 0;
         virtual EventIterator begin();
