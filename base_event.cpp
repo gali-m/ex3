@@ -12,7 +12,7 @@ namespace mtm {
     StudentNode::StudentNode(int student_id, StudentNode* next)
     {
         this->student_id = student_id;
-        this->next = NULL;
+        this->next = next;
     }
 
     StudentNode::StudentNode(const StudentNode& student_node) : student_id(student_node.student_id)
@@ -38,18 +38,18 @@ namespace mtm {
         }
     }
 
-    StudentNode& StudentNode::operator+=(StudentNode* student)
-    {
-        StudentNode* current = this;
+    // StudentNode& StudentNode::operator+=(StudentNode* student)
+    // {
+    //     StudentNode* current = this;
 
-        while (current != NULL) {
-            current = current->next;
-        }
+    //     while (current != NULL) {
+    //         current = current->next;
+    //     }
 
-        current->next = &StudentNode((*student).student_id, (*student).next);
+    //     current->next = &StudentNode((*student).student_id, (*student).next);
 
-        return *this;
-    }
+    //     return *this;
+    // }
     
 
     BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name) 
@@ -60,7 +60,7 @@ namespace mtm {
     BaseEvent::~BaseEvent() {}
 
 
-    bool is_student_in_list(StudentNode* students_list, StudentNode* student)
+    bool BaseEvent::is_student_in_list(StudentNode* students_list, StudentNode* student)
     {
         while (students_list != NULL)
         {
@@ -74,7 +74,7 @@ namespace mtm {
         return false;
     }
 
-    bool is_valid_student(StudentNode* student)
+    bool BaseEvent::is_valid_student(StudentNode* student)
     {
         if (student->student_id > MAX_STUDENT_ID && student->student_id < MIN_STUDENT_ID)
         {
@@ -129,6 +129,30 @@ namespace mtm {
 
         return os;
         
+    }
+
+    void BaseEvent::add_to_students_list(StudentNode* students_list, StudentNode* student)
+    {
+        if(students_list == NULL)
+        {
+            students_list = &StudentNode((*student).student_id, NULL);
+            return;
+        }
+
+        StudentNode* current = students_list;
+        StudentNode* before_current = NULL;
+
+        while (current->student_id < student->student_id) {
+            if (current->next == NULL)
+            {
+                current->next = &StudentNode((*student).student_id, NULL);
+                return;
+            }
+            before_current = current;
+            current = current->next;
+        }
+
+        current->next = &StudentNode((*student).student_id, (*before_current).next);
     }
 
 }

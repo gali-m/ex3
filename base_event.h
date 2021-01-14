@@ -18,7 +18,7 @@ namespace mtm {
         StudentNode(int student_id, StudentNode* next = NULL);
         ~StudentNode();
         StudentNode(const StudentNode& student_node);
-        StudentNode& operator+=(StudentNode* student);
+        // StudentNode& operator+=(StudentNode* student);
 
         friend class BaseEvent;
     };
@@ -44,6 +44,7 @@ namespace mtm {
     protected:
         bool is_valid_student(StudentNode* student);
         bool is_student_in_list(StudentNode* students_list, StudentNode* student);
+        void add_to_students_list(StudentNode* students_list, StudentNode* student);
     };
 
 }
