@@ -24,19 +24,20 @@ namespace mtm {
     };
 
     class BaseEvent{
+    protected:
         DateWrap date;
         std::string name;
         StudentNode* students_list;
     
     public:
         BaseEvent(DateWrap date, std::string name);
-        virtual ~BaseEvent();
+        // virtual ~BaseEvent();
         // BaseEvent(const BaseEvent&);
 
         virtual void registerParticipant(StudentNode* student) = 0;
         virtual void unregisterParticipant(StudentNode* student);
-        virtual std::ostream& printShort(std::ostream& os);
-        virtual std::ostream& printLong(std::ostream& os);
+        virtual void printShort();
+        virtual void printLong();
         virtual BaseEvent* clone() = 0;
 
         friend class EventContainer;

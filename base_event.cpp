@@ -9,12 +9,9 @@
 
 namespace mtm {
 
-    StudentNode::StudentNode(int student_id, StudentNode* next)
-    {
-        this->student_id = student_id;
-        this->next = next;
-    }
+    StudentNode::StudentNode(int student_id, StudentNode* next) : student_id(student_id), next(NULL) {}
 
+    //TODO: fix studenNode copy
     StudentNode::StudentNode(const StudentNode& student_node) : student_id(student_node.student_id)
     {
         if (student_node.next == NULL)
@@ -23,7 +20,7 @@ namespace mtm {
             return;
         }
 
-        this->next = &StudentNode(student_node.next->student_id, student_node.next->next);
+        this->next = new StudentNode(student_node.next->student_id, student_node.next->next);
     }
 
     StudentNode::~StudentNode()
@@ -52,12 +49,9 @@ namespace mtm {
     // }
     
 
-    BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name) 
-    {
-        students_list = NULL;
-    }
+    BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name), students_list(NULL) {}
 
-    BaseEvent::~BaseEvent() {}
+    // BaseEvent::~BaseEvent() {}
 
 
     bool BaseEvent::is_student_in_list(StudentNode* students_list, StudentNode* student)
@@ -108,34 +102,30 @@ namespace mtm {
         throw NotRegistered();
     }
 
-
-    std::ostream& BaseEvent::printShort(std::ostream& os)
+    void BaseEvent::printShort()
     {
-        return os << this->name << " " << this->date << "\n";
+        std::cout << this->name << " " << this->date << "\n";
     }
 
 
-    std::ostream& BaseEvent::printLong(std::ostream& os)
+    void BaseEvent::printLong()
     {
-        os << this->printShort(os);
+        this->printShort();
 
         StudentNode* current_student = this->students_list;
 
         while (current_student != NULL)
         {
-            os << this->students_list << "\n";
+            std::cout << this->students_list << "\n";
             current_student = current_student->next;
         }
-
-        return os;
-        
     }
 
     void BaseEvent::add_to_students_list(StudentNode* students_list, StudentNode* student)
     {
         if(students_list == NULL)
         {
-            students_list = &StudentNode((*student).student_id, NULL);
+            students_list = new StudentNode((*student).student_id, NULL);
             return;
         }
 
@@ -145,14 +135,14 @@ namespace mtm {
         while (current->student_id < student->student_id) {
             if (current->next == NULL)
             {
-                current->next = &StudentNode((*student).student_id, NULL);
+                current->next = new StudentNode((*student).student_id, NULL);
                 return;
             }
             before_current = current;
             current = current->next;
         }
 
-        current->next = &StudentNode((*student).student_id, (*before_current).next);
+        before_current->next = new StudentNode((*student).student_id, (*before_current).next);
     }
 
 }
