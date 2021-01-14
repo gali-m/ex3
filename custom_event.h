@@ -16,8 +16,7 @@ namespace mtm {
         CustomEvent(DateWrap date, std::string name, CanRegister can_register_func);
         CustomEvent(const CustomEvent& open_event);
 
-        void addInvitee(StudentNode* student);
-        void registerParticipant(StudentNode* student);
+        void registerParticipant(int student_id);
         BaseEvent* clone() override;
 
     };

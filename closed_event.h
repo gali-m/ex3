@@ -15,8 +15,8 @@ namespace mtm {
         ClosedEvent(DateWrap date, std::string name);
         // ClosedEvent(const ClosedEvent& open_event);
 
-        void addInvitee(StudentNode* student);
-        void registerParticipant(StudentNode* student);
+        void addInvitee(int student_id);
+        void registerParticipant(int student_id);
         BaseEvent* clone() override;
 
     };

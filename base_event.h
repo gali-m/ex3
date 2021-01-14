@@ -34,18 +34,18 @@ namespace mtm {
         // virtual ~BaseEvent();
         // BaseEvent(const BaseEvent&);
 
-        virtual void registerParticipant(StudentNode* student) = 0;
-        virtual void unregisterParticipant(StudentNode* student);
-        virtual void printShort();
-        virtual void printLong();
+        virtual void registerParticipant(int student_id) = 0;
+        virtual void unregisterParticipant(int student_id);
+        virtual void printShort(std::ostream cout);
+        virtual void printLong(std::ostream cout);
         virtual BaseEvent* clone() = 0;
 
         friend class EventContainer;
 
     protected:
-        bool is_valid_student(StudentNode* student);
-        bool is_student_in_list(StudentNode* students_list, StudentNode* student);
-        void add_to_students_list(StudentNode* students_list, StudentNode* student);
+        bool is_valid_student(int student_id);
+        bool is_student_in_list(StudentNode* students_list, int student_id);
+        void add_to_students_list(StudentNode* students_list, int student_id);
     };
 
 }

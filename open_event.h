@@ -14,7 +14,7 @@ namespace mtm {
         OpenEvent(DateWrap date, std::string name);
         // OpenEvent(const OpenEvent& open_event);
 
-        void registerParticipant(StudentNode* student);
+        void registerParticipant(int student_id);
         BaseEvent* clone() override;
 
     };

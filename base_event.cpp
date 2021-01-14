@@ -54,11 +54,11 @@ namespace mtm {
     // BaseEvent::~BaseEvent() {}
 
 
-    bool BaseEvent::is_student_in_list(StudentNode* students_list, StudentNode* student)
+    bool BaseEvent::is_student_in_list(StudentNode* students_list, int student_id)
     {
         while (students_list != NULL)
         {
-            if (students_list->student_id == student->student_id)
+            if (students_list->student_id == student_id)
             {
                 return true;
             }
@@ -68,9 +68,9 @@ namespace mtm {
         return false;
     }
 
-    bool BaseEvent::is_valid_student(StudentNode* student)
+    bool BaseEvent::is_valid_student(int student_id)
     {
-        if (student->student_id > MAX_STUDENT_ID && student->student_id < MIN_STUDENT_ID)
+        if (student_id > MAX_STUDENT_ID && student_id < MIN_STUDENT_ID)
         {
             throw InvalidStudent();
             return false;
@@ -79,15 +79,15 @@ namespace mtm {
     }
 
 
-    void BaseEvent::unregisterParticipant(StudentNode* student)
+    void BaseEvent::unregisterParticipant(int student_id)
     {
-        is_valid_student(student);
+        is_valid_student(student_id);
 
         StudentNode* current_student = this->students_list;
 
         while (current_student != NULL)
         {
-            if (current_student->student_id == student->student_id)
+            if (current_student->student_id == student_id)
             {
                 StudentNode* node_to_remove = current_student;
                 current_student = current_student->next;
@@ -102,47 +102,47 @@ namespace mtm {
         throw NotRegistered();
     }
 
-    void BaseEvent::printShort()
+    void BaseEvent::printShort(std::ostream cout)
     {
-        std::cout << this->name << " " << this->date << "\n";
+        cout << this->name << " " << this->date << "\n";
     }
 
 
-    void BaseEvent::printLong()
+    void BaseEvent::printLong(std::ostream cout)
     {
-        this->printShort();
+        this->printShort(cout);
 
         StudentNode* current_student = this->students_list;
 
         while (current_student != NULL)
         {
-            std::cout << this->students_list << "\n";
+            cout << this->students_list << "\n";
             current_student = current_student->next;
         }
     }
 
-    void BaseEvent::add_to_students_list(StudentNode* students_list, StudentNode* student)
+    void BaseEvent::add_to_students_list(StudentNode* students_list, int student_id)
     {
         if(students_list == NULL)
         {
-            students_list = new StudentNode((*student).student_id, NULL);
+            students_list = new StudentNode(student_id, NULL);
             return;
         }
 
         StudentNode* current = students_list;
         StudentNode* before_current = NULL;
 
-        while (current->student_id < student->student_id) {
+        while (current->student_id < student_id) {
             if (current->next == NULL)
             {
-                current->next = new StudentNode((*student).student_id, NULL);
+                current->next = new StudentNode(student_id, NULL);
                 return;
             }
             before_current = current;
             current = current->next;
         }
 
-        before_current->next = new StudentNode((*student).student_id, (*before_current).next);
+        before_current->next = new StudentNode(student_id, (*before_current).next);
     }
 
 }
