@@ -10,18 +10,28 @@ const int MIN_STUDENT_ID = 1;
 
 namespace mtm {
     
-    ClosedEvent::ClosedEvent(DateWrap date, std::string name) : date(date), name(name) 
-    {
-        students_list = NULL;
-    }
+    ClosedEvent::ClosedEvent(DateWrap date, std::string name) : BaseEvent(date, name), guest_list(NULL) {}
 
-    ClosedEvent::ClosedEvent(const ClosedEvent& open_event)
-    {
-        this->date = open_event.date;
-        this->name = open_event.name;
-        this->students_list = open_event.students_list;
-    }
+    // ClosedEvent::ClosedEvent(const ClosedEvent& open_event)
+    // {
+    //     this->date = open_event.date;
+    //     this->name = open_event.name;
+    //     this->students_list = open_event.students_list;
+    //     this->guest_list = open_event.guest_list;
+    // }
 
+    void ClosedEvent::addInvitee(StudentNode* student)
+    {
+        is_valid_student(student);
+
+        bool is_student_in_list_return = is_student_in_list(this->students_list, student);
+        if (is_student_in_list_return)
+        {
+            throw AlreadyInvited();
+        }
+
+        add_to_students_list(this->guest_list, student);
+    }
 
     void ClosedEvent::registerParticipant(StudentNode* student)
     {
@@ -33,15 +43,14 @@ namespace mtm {
             throw AlreadyRegistered();
         }
 
-        this->students_list += student;
+        bool is_student_in_guest_list_return = is_student_in_list(this->guest_list, student);
+        if (is_student_in_guest_list_return == false)
+        {
+            throw RegistrationBlocked();
+        }
+
+        add_to_students_list(this->students_list, student);
     }
-
-    void ClosedEvent::unregisterParticipant(StudentNode* student) {}
-
-    std::ostream& ClosedEvent::printShort(std::ostream& os) {}
-
-    std::ostream& ClosedEvent::printLong(std::ostream& os) {}
-
 
     BaseEvent* ClosedEvent::clone()
     {

@@ -19,6 +19,7 @@ namespace mtm
     class InvalidStudent : public mtm::Exception {};
     class NotRegistered : public mtm::Exception {};
     class AlreadyInvited : public mtm::Exception {};
+    class RegistrationBlocked : public mtm::Exception {};
     //collections
     class NotSupported : public mtm::Exception {};
     class DateMismatch : public mtm::Exception {};
