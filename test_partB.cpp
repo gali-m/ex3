@@ -4,10 +4,10 @@
 #include "date_wrap.h"
 #include "event_container.h"
 #include "exceptions.h"
-// #include "festival.h"
-// #include "one_time_event.h"
+#include "festival.h"
+#include "one_time_event.h"
 // #include "open_event.h"
-// #include "recurring_event.h"
+#include "recurring_event.h"
 #include <cstdlib>
 #include <iostream>
 
@@ -81,5 +81,36 @@ int main(int argc, char* argv[]) {
     //     int i = std::atoi(argv[1]);
     //     tests[i - 1]();
     // }
-    // return 0;
-}
+
+
+    // assume `ec` in an EventContainer with 2 events
+        // mtm::EventContainer& ec = ...;
+        // mtm::EventContainer::EventIterator it = ec.begin();
+        // mtm::EventContainer::EventIterator it_end = ec.end();
+        // mtm::BaseEvent& ev = *it; // `ev` is the first event stored in `ec`
+        // Ev.printShort(); // print short description of 1st event
+        // (*it).printShort(); // same output as previous line
+        // ++it;
+        // (*it).printShort(); // print short description of 2nd event
+        // std::cout << (it == it_end) << std::endl; // print "0"
+        // std::cout << (it != it_end) << std::endl; // print "1"
+        // ++it;
+        // std::cout << (it == it_end) << std::endl; // print "1"
+        // std::cout << (it != it_end) << std::endl; // print "0"
+        // Festival festival(DateWrap(21, 10, 2020));
+        // festival.add(OpenEvent(DateWrap(21, 10, 2020), "Performance 1"));
+        // ClosedEvent closed(DateWrap(21, 10, 2020), "Performance 2");
+        // closed.addInvitee(1);
+        // closed.addInvitee(500);
+        // festival.add(closed);
+        // printEventsShort(festival);
+        // RecurringEvent<OpenEvent> recurring(
+        // DateWrap(21, 10, 2020), "Wednesday Noon", 13, 7);
+        // printEventsShort(recurring);
+        // OneTimeEvent<OpenEvent> one_time(
+        // DateWrap(21, 10, 2020), "Start of Semester"));
+        // printEventsShort(one_time);
+
+
+        // return 0;
+    }

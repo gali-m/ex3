@@ -84,7 +84,7 @@ namespace mtm
             return NULL;
         }
 
-        EventIterator event_iterator = EventIterator(this->event_list);
+        EventIterator event_iterator(this->event_list);
         while (event_iterator.iterator->event != NULL) 
         {
             ++event_iterator;
@@ -92,4 +92,19 @@ namespace mtm
 
         return event_iterator;
     }
+
+    DateWrap EventContainer::getEventDate(BaseEvent& event)
+    {
+        return event.date;
+    }
+
+    std::string EventContainer::getEventName(BaseEvent& event)
+    {
+        return event.name;
+    }
+
+    // event_node* EventContainer::getIteratorEventnode(EventIterator event_iterator)
+    // {
+    //     return event_iterator.iterator;
+    // }
 }

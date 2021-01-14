@@ -5,8 +5,8 @@
 #include "exceptions.h"
 #include "base_event.h"
 
-namespace mtm {
-
+namespace mtm 
+{
     struct event_node
     {
         BaseEvent* event;
@@ -14,16 +14,11 @@ namespace mtm {
 
         event_node(BaseEvent* event = NULL, event_node* next = NULL);
         event_node(const event_node& event_node);
-
-        friend class EventIterator;
-        friend class EventContainer;
     };
 
 
     class EventContainer
     {
-        event_node* event_list;
-
     public:
 
         class EventIterator
@@ -43,6 +38,15 @@ namespace mtm {
             friend class EventContainer;
         };
 
+    protected:
+
+        event_node* event_list;
+        DateWrap getEventDate(BaseEvent& event);
+        std::string getEventName(BaseEvent& event);
+        // event_node* getIteratorEventnode(EventIterator event_iterator);
+
+    public:
+
         EventContainer();
         virtual ~EventContainer();
 
@@ -52,6 +56,4 @@ namespace mtm {
     };
 
 }
-
-
 #endif //BASE_EVENT_H
