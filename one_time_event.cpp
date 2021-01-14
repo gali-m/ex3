@@ -3,7 +3,7 @@
 namespace mtm
 {
     template <class EventType>
-    OneTimeEvent::OneTimeEvent(DateWrap event_date, std::string event_name)
+    OneTimeEvent<EventType>::OneTimeEvent(DateWrap event_date, std::string event_name)
     {
         DateWrap date = DateWrap(event_date);
         std::string name = event_name;
@@ -17,7 +17,7 @@ namespace mtm
     }
 
     template <class EventType>
-    void OneTimeEvent::add(BaseEvent& event)
+    void OneTimeEvent<EventType>::add(BaseEvent& event)
     {
         throw NotSupported();
     }

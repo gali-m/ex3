@@ -3,7 +3,7 @@
 namespace mtm
 {
     template <class EventType>
-    RecurringEvent<class EventType>::RecurringEvent(DateWrap first_date, std::string event_name, int num_occurrences, int interval_days)
+    RecurringEvent<EventType>::RecurringEvent(DateWrap first_date, std::string event_name, int num_occurrences, int interval_days)
     {
         if (num_occurrences <= 0)
         {
@@ -44,7 +44,7 @@ namespace mtm
     }
 
     template <class EventType>
-    void RecurringEvent<class EventType>::add(BaseEvent& event)
+    void RecurringEvent<EventType>::add(BaseEvent& event)
     {
         throw NotSupported();
     }
