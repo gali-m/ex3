@@ -102,21 +102,21 @@ namespace mtm {
         throw NotRegistered();
     }
 
-    void BaseEvent::printShort(std::ostream cout)
+    void BaseEvent::printShort(std::ostream &output)
     {
-        cout << this->name << " " << this->date << "\n";
+        output << this->name << " " << this->date << "\n";
     }
 
 
-    void BaseEvent::printLong(std::ostream cout)
+    void BaseEvent::printLong(std::ostream &output)
     {
-        this->printShort(cout);
+        this->printShort(output);
 
         StudentNode* current_student = this->students_list;
 
         while (current_student != NULL)
         {
-            cout << this->students_list << "\n";
+            output << this->students_list << "\n";
             current_student = current_student->next;
         }
     }
