@@ -44,7 +44,7 @@ namespace mtm
     }
 
     template <class EventType>
-    void RecurringEvent<EventType>::add(BaseEvent& event)
+    void RecurringEvent<EventType>::add(const BaseEvent& event)
     {
         throw NotSupported();
     }

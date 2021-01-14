@@ -4,7 +4,7 @@ namespace mtm
 {
     Festival::Festival(DateWrap date): date(date) {}
 
-    void Festival::add(BaseEvent& event)
+    void Festival::add(const BaseEvent& event)
     {
         DateWrap event_date = getEventDate(event);
         if (event_date != this->date)

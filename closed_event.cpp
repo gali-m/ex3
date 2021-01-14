@@ -52,7 +52,7 @@ namespace mtm {
         add_to_students_list(this->students_list, student_id);
     }
 
-    BaseEvent* ClosedEvent::clone()
+    BaseEvent* ClosedEvent::clone() const
     {
         return new ClosedEvent(*this);
     }

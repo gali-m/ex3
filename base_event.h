@@ -38,7 +38,7 @@ namespace mtm {
         virtual void unregisterParticipant(int student_id);
         virtual void printShort(std::ostream cout);
         virtual void printLong(std::ostream cout);
-        virtual BaseEvent* clone() = 0;
+        virtual BaseEvent* clone() const = 0;
 
         friend class EventContainer;
 

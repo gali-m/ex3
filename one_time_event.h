@@ -9,7 +9,7 @@ namespace mtm
     {
     public:
         OneTimeEvent(DateWrap event_date, std::string event_name);
-        void add(BaseEvent& event);
+        void add(const BaseEvent& event);
     };
 
 }

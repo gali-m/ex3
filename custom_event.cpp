@@ -44,7 +44,7 @@ namespace mtm {
     }
 
     template <class CanRegister>
-    BaseEvent* CustomEvent<CanRegister>::clone()
+    BaseEvent* CustomEvent<CanRegister>::clone() const
     {
         return new CustomEvent(*this);
     }

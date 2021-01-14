@@ -17,7 +17,7 @@ namespace mtm
     }
 
     template <class EventType>
-    void OneTimeEvent<EventType>::add(BaseEvent& event)
+    void OneTimeEvent<EventType>::add(const BaseEvent& event)
     {
         throw NotSupported();
     }

@@ -93,12 +93,12 @@ namespace mtm
         return event_iterator;
     }
 
-    DateWrap EventContainer::getEventDate(BaseEvent& event)
+    DateWrap EventContainer::getEventDate(const BaseEvent& event)
     {
         return event.date;
     }
 
-    std::string EventContainer::getEventName(BaseEvent& event)
+    std::string EventContainer::getEventName(const BaseEvent& event)
     {
         return event.name;
     }

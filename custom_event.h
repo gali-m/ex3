@@ -17,7 +17,7 @@ namespace mtm {
         CustomEvent(const CustomEvent& open_event);
 
         void registerParticipant(int student_id);
-        BaseEvent* clone() override;
+        BaseEvent* clone() const override;
 
     };
 

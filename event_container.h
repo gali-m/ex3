@@ -41,8 +41,8 @@ namespace mtm
     protected:
 
         event_node* event_list;
-        DateWrap getEventDate(BaseEvent& event);
-        std::string getEventName(BaseEvent& event);
+        DateWrap getEventDate(const BaseEvent& event);
+        std::string getEventName(const BaseEvent& event);
         // event_node* getIteratorEventnode(EventIterator event_iterator);
 
     public:
@@ -50,7 +50,7 @@ namespace mtm
         EventContainer();
         virtual ~EventContainer();
 
-        virtual void add(BaseEvent& event) = 0;
+        virtual void add(const BaseEvent& event) = 0;
         virtual EventIterator begin();
         virtual EventIterator end();
     };
