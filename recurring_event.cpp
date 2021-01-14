@@ -21,20 +21,20 @@ namespace mtm
 
         for( int i = 0; i < num_occurrences; i++)
         {
-            EventType event = EventType(date, name);
-            event_node event_node();
-            event_node->event = event;
+            BaseEvent* event = new EventType(date, name);
+            event_node* node = new event_node();
+            node->event = event;
 
             if (i == 0)
             { // first event
-                event_node->next = curr_event_node;
-                this->event_list = event_node;
+                node->next = curr_event_node;
+                this->event_list = node;
                 next_event_node = next_event_node->next;
             }
             else
             {
-                event_node->next = next_event_node;
-                curr_event_node->next = event_node;
+                node->next = next_event_node;
+                curr_event_node->next = node;
             }
             
             date += interval_days;

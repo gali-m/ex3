@@ -4,6 +4,9 @@
 #include <iostream>
 #include "exceptions.h"
 #include "base_event.h"
+#include "open_event.h"
+#include "closed_event.h"
+#include "custom_event.h"
 
 namespace mtm 
 {

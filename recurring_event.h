@@ -11,7 +11,6 @@ namespace mtm
         RecurringEvent(DateWrap first_date, std::string event_name, int num_occurrences, int interval_days);
         void add(const BaseEvent& event);
     };
-
 }
 
 

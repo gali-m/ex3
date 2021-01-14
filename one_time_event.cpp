@@ -7,13 +7,13 @@ namespace mtm
     {
         DateWrap date = DateWrap(event_date);
         std::string name = event_name;
-        EventType event = EventType(date, name);
+        BaseEvent* event = new EventType(date, name);
 
-        event_node event_node();
-        event_node->event = event;
-        event_node->next = this->event_list;
+        event_node* node = new event_node();
+        node->event = event;
+        node->next = this->event_list;
 
-        this->event_list = event_node;
+        this->event_list = node;
     }
 
     template <class EventType>
