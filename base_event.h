@@ -31,13 +31,13 @@ namespace mtm {
     
     public:
         BaseEvent(DateWrap date, std::string name);
-        // virtual ~BaseEvent();
+        virtual ~BaseEvent() = default;
         // BaseEvent(const BaseEvent&);
 
         virtual void registerParticipant(int student_id) = 0;
         virtual void unregisterParticipant(int student_id);
-        virtual void printShort(std::ostream cout);
-        virtual void printLong(std::ostream cout);
+        virtual void printShort(std::ostream &output);
+        virtual void printLong(std::ostream &output);
         virtual BaseEvent* clone() const = 0;
 
         friend class EventContainer;
