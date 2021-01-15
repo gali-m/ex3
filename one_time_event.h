@@ -8,9 +8,28 @@ namespace mtm
     class OneTimeEvent : public EventContainer
     {
     public:
-        OneTimeEvent(DateWrap event_date, std::string event_name);
-        void add(const BaseEvent& event);
+        OneTimeEvent(DateWrap event_date, std::string event_name)
+        {
+            DateWrap date = DateWrap(event_date);
+            std::string name = event_name;
+            BaseEvent* event = new EventType(date, name);
+
+            event_node* node = new event_node();
+            node->event = event;
+            node->next = this->event_list;
+
+            this->event_list = node;
+        }
+
+        void add(const BaseEvent& event)
+        {
+            throw NotSupported();
+        }
     };
+
+    // template class OneTimeEvent<OpenEvent>;
+    // template class OneTimeEvent<ClosedEvent>;
+    // template class RecurringEvent<CustomEvent>;
 
 }
 
