@@ -34,7 +34,7 @@ namespace mtm {
         virtual ~BaseEvent() = default;
         // BaseEvent(const BaseEvent&);
 
-        virtual void registerParticipant(int student_id) = 0;
+        virtual void registerParticipant(int student_id);
         virtual void unregisterParticipant(int student_id);
         virtual void printShort(std::ostream &output);
         virtual void printLong(std::ostream &output);

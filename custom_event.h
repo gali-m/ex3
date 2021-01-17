@@ -25,7 +25,7 @@ namespace mtm {
             this->can_register_func = open_event.can_register_func;
         }
 
-        void registerParticipant(int student_id)
+        void registerParticipant(int student_id) override
         {
             is_valid_student(student_id);
 

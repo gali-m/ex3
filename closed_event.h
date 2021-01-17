@@ -16,7 +16,7 @@ namespace mtm {
         // ClosedEvent(const ClosedEvent& open_event);
 
         void addInvitee(int student_id);
-        void registerParticipant(int student_id);
+        void registerParticipant(int student_id) override;
         BaseEvent* clone() const override;
 
     };
