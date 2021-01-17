@@ -22,7 +22,7 @@ namespace mtm
             DateWrap date = DateWrap(first_date);
             std::string name = event_name;
             event_node* curr_event_node = this->event_list;
-            event_node* next_event_node = this->event_list;
+            event_node* last_node = this->event_list;
 
             for( int i = 0; i < num_occurrences; i++)
             {
@@ -34,17 +34,14 @@ namespace mtm
                 { // first event
                     node->next = curr_event_node;
                     this->event_list = node;
-                    next_event_node = next_event_node->next;
                 }
                 else
                 {
-                    node->next = next_event_node;
+                    node->next = last_node;
                     curr_event_node->next = node;
                 }
-                
                 date += interval_days;
-                curr_event_node = curr_event_node->next;
-                next_event_node = next_event_node->next;
+                curr_event_node = node;
             }
         }
         
