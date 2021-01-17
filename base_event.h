@@ -16,18 +16,26 @@ namespace mtm {
         StudentNode* next;
 
         StudentNode(int student_id, StudentNode* next = NULL);
-        ~StudentNode();
+        // ~StudentNode();
         StudentNode(const StudentNode& student_node);
         // StudentNode& operator+=(StudentNode* student);
 
         friend class BaseEvent;
     };
 
+    struct StudentList
+    {
+        StudentNode* student;
+        StudentList();
+        StudentList(StudentNode* student);
+        ~StudentList();
+    };
+
     class BaseEvent{
     protected:
         DateWrap date;
         std::string name;
-        StudentNode* students_list;
+        StudentList students_list;
     
     public:
         BaseEvent(DateWrap date, std::string name);
@@ -44,8 +52,9 @@ namespace mtm {
 
     protected:
         bool is_valid_student(int student_id);
-        bool is_student_in_list(StudentNode* students_list, int student_id);
-        void add_to_students_list(StudentNode* students_list, int student_id);
+        bool is_student_in_list(StudentList students_list, int student_id);
+        // void add_to_students_list(StudentNode* students_list, int student_id);
+        void add_to_students_list(int student_id);
     };
 
 }
