@@ -30,7 +30,7 @@ namespace mtm
 
         public:
 
-            EventIterator(const event_node* event);
+            EventIterator(event_node* event);
             EventIterator(const EventIterator& event_iterator);
 	        EventIterator& operator=(const EventIterator& event_iterator);
             EventIterator& operator++();
