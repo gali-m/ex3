@@ -22,7 +22,9 @@ void printEventsShort(mtm::EventContainer& events) {
 
 void test1() {
     mtm::Festival festival(mtm::DateWrap(21, 10, 2020));
-    festival.add(mtm::OpenEvent(mtm::DateWrap(21, 10, 2020), "Performance 1"));
+    mtm::DateWrap date1 = mtm::DateWrap(21, 10, 2020);
+    mtm::OpenEvent event1 = mtm::OpenEvent(date1, "Performance 1");
+    festival.add(event1);
     mtm::ClosedEvent closed(mtm::DateWrap(21, 10, 2020), "Performance 2");
     closed.addInvitee(1);
     closed.addInvitee(500);
@@ -56,7 +58,8 @@ struct StudentFilter {
 };
 
 void test2() {
-    mtm::OpenEvent open(mtm::DateWrap(21, 10, 2020), "An Open Event");
+    mtm::DateWrap date1 = mtm::DateWrap(21, 10, 2020);
+    mtm::OpenEvent open(date1, "An Open Event");
     test2_aux(open);
     mtm::ClosedEvent closed(mtm::DateWrap(21, 10, 2020), "A Closed Event");
     closed.addInvitee(1);
@@ -73,7 +76,7 @@ const Test tests[] = {test1, test2};
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        test1();
+        // test1();
         test2();
     } else if (argc > 2) {
         std::cout << "invalid arguments" << std::endl;

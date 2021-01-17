@@ -11,7 +11,7 @@ namespace mtm {
     class OpenEvent : public BaseEvent{
     
     public:
-        OpenEvent(DateWrap date, std::string name);
+        OpenEvent(const DateWrap date, const std::string name);
         // OpenEvent(const OpenEvent& open_event);
 
         // void registerParticipant(int student_id);

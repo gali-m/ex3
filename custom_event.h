@@ -41,7 +41,8 @@ namespace mtm {
                 throw RegistrationBlocked();
             }
 
-            add_to_students_list(this->students_list, student_id);
+            // add_to_students_list(this->students_list, student_id);
+            add_to_students_list(student_id);
         }
 
         BaseEvent* clone() const override

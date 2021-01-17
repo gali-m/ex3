@@ -10,7 +10,7 @@ const int MIN_STUDENT_ID = 1;
 
 namespace mtm {
     
-    ClosedEvent::ClosedEvent(DateWrap date, std::string name) : BaseEvent(date, name), guest_list(NULL) {}
+    ClosedEvent::ClosedEvent(const DateWrap date, const std::string name) : BaseEvent(date, name), guest_list(NULL) {}
 
     // ClosedEvent::ClosedEvent(const ClosedEvent& open_event)
     // {
@@ -30,7 +30,8 @@ namespace mtm {
             throw AlreadyInvited();
         }
 
-        add_to_students_list(this->guest_list, student_id);
+        // add_to_students_list(this->guest_list, student_id);
+        add_to_students_list(student_id);
     }
 
     void ClosedEvent::registerParticipant(int student_id)
@@ -49,7 +50,8 @@ namespace mtm {
             throw RegistrationBlocked();
         }
 
-        add_to_students_list(this->students_list, student_id);
+        // add_to_students_list(this->students_list, student_id);
+        add_to_students_list(student_id);
     }
 
     BaseEvent* ClosedEvent::clone() const

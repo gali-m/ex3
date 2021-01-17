@@ -10,7 +10,7 @@ const int MIN_STUDENT_ID = 1;
 
 namespace mtm {
     
-    OpenEvent::OpenEvent(DateWrap date, std::string name) : BaseEvent(date, name) {}
+    OpenEvent::OpenEvent(const DateWrap date, const std::string name) : BaseEvent(date, name) {}
 
     // OpenEvent::OpenEvent(const OpenEvent& open_event)
     // {

@@ -12,7 +12,7 @@ namespace mtm {
         StudentNode* guest_list;
     
     public:
-        ClosedEvent(DateWrap date, std::string name);
+        ClosedEvent(const DateWrap date, const std::string name);
         // ClosedEvent(const ClosedEvent& open_event);
 
         void addInvitee(int student_id);
