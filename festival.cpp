@@ -13,14 +13,14 @@ namespace mtm
         }
 
         event_node* event_to_add = new event_node();
-        (*event_to_add).event = event.clone();
+        event_to_add->event = event.clone();
 
         event_node* curr_node = this->event_list;
         event_node* next_node = this->event_list;
 
         if (this->event_list->event == NULL || getEventName(*(curr_node->event)) >= getEventName(event))
         { // first event
-            (*event_to_add).next = this->event_list;
+            event_to_add->next = this->event_list;
             this->event_list = event_to_add;
             return;
         }
@@ -31,7 +31,7 @@ namespace mtm
         { // insert by event name
             if (getEventName(*(next_node->event)) >= getEventName(event))
             { 
-                (*event_to_add).next = next_node;
+                event_to_add->next = next_node;
                 curr_node->next = event_to_add;
                 return;
             }
@@ -40,7 +40,7 @@ namespace mtm
         }
 
         // last event
-        (*event_to_add).next = next_node;
+        event_to_add->next = next_node;
         curr_node->next = event_to_add;
     }
 }
