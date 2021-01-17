@@ -8,7 +8,7 @@ namespace mtm
     class OneTimeEvent : public EventContainer
     {
     public:
-        OneTimeEvent(DateWrap event_date, std::string event_name)
+        OneTimeEvent(const DateWrap event_date, const std::string event_name)
         {
             DateWrap date = DateWrap(event_date);
             std::string name = event_name;

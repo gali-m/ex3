@@ -2,7 +2,7 @@
 
 namespace mtm
 {
-    Festival::Festival(DateWrap date): date(date) {}
+    Festival::Festival(const DateWrap date): date(date) {}
 
     void Festival::add(const BaseEvent& event)
     {
