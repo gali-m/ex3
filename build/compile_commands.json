@@ -1,7 +1,62 @@
 [
 {
-  "directory": "/home/noaro/mtm/ex3/ex3/build",
-  "command": "/usr/local/bin/gcc   -g   -o CMakeFiles/date.dir/provided/date.c.o   -c /home/noaro/mtm/ex3/ex3/provided/date.c",
-  "file": "/home/noaro/mtm/ex3/ex3/provided/date.c"
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progA.dir/test_partA.cpp.o -c /home/gali/mtm/ex3/test_partA.cpp",
+  "file": "/home/gali/mtm/ex3/test_partA.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progA.dir/date_wrap.cpp.o -c /home/gali/mtm/ex3/date_wrap.cpp",
+  "file": "/home/gali/mtm/ex3/date_wrap.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/test_partB.cpp.o -c /home/gali/mtm/ex3/test_partB.cpp",
+  "file": "/home/gali/mtm/ex3/test_partB.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/base_event.cpp.o -c /home/gali/mtm/ex3/base_event.cpp",
+  "file": "/home/gali/mtm/ex3/base_event.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/event_container.cpp.o -c /home/gali/mtm/ex3/event_container.cpp",
+  "file": "/home/gali/mtm/ex3/event_container.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/festival.cpp.o -c /home/gali/mtm/ex3/festival.cpp",
+  "file": "/home/gali/mtm/ex3/festival.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/recurring_event.cpp.o -c /home/gali/mtm/ex3/recurring_event.cpp",
+  "file": "/home/gali/mtm/ex3/recurring_event.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/one_time_event.cpp.o -c /home/gali/mtm/ex3/one_time_event.cpp",
+  "file": "/home/gali/mtm/ex3/one_time_event.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/date_wrap.cpp.o -c /home/gali/mtm/ex3/date_wrap.cpp",
+  "file": "/home/gali/mtm/ex3/date_wrap.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/closed_event.cpp.o -c /home/gali/mtm/ex3/closed_event.cpp",
+  "file": "/home/gali/mtm/ex3/closed_event.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/open_event.cpp.o -c /home/gali/mtm/ex3/open_event.cpp",
+  "file": "/home/gali/mtm/ex3/open_event.cpp"
+},
+{
+  "directory": "/home/gali/mtm/ex3/build",
+  "command": "/usr/bin/g++    -std=c++11 --pedantic-errors -Wall -Werror -g   -o CMakeFiles/progB.dir/custom_event.cpp.o -c /home/gali/mtm/ex3/custom_event.cpp",
+  "file": "/home/gali/mtm/ex3/custom_event.cpp"
 }
 ]

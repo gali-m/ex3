@@ -65,10 +65,10 @@ RM = /home/mtm/cmake-3.17.0-Linux-x86_64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noaro/mtm/ex3/ex3
+CMAKE_SOURCE_DIR = /home/gali/mtm/ex3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noaro/mtm/ex3/ex3/build
+CMAKE_BINARY_DIR = /home/gali/mtm/ex3/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -95,11 +95,44 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/home/mtm/cmake-3.17.0-Linux-x86_64/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/home/mtm/cmake-3.17.0-Linux-x86_64/bin/cpack --config ./CPackSourceConfig.cmake /home/gali/mtm/ex3/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/home/mtm/cmake-3.17.0-Linux-x86_64/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noaro/mtm/ex3/ex3/build/CMakeFiles /home/noaro/mtm/ex3/ex3/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gali/mtm/ex3/build/CMakeFiles /home/gali/mtm/ex3/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noaro/mtm/ex3/ex3/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gali/mtm/ex3/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,44 +161,694 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named date
+# Target rules for targets named progA
 
 # Build rule for target.
-date: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 date
-.PHONY : date
+progA: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 progA
+.PHONY : progA
 
 # fast build rule for target.
-date/fast:
-	$(MAKE) -f CMakeFiles/date.dir/build.make CMakeFiles/date.dir/build
-.PHONY : date/fast
+progA/fast:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/build
+.PHONY : progA/fast
 
-provided/date.o: provided/date.c.o
+#=============================================================================
+# Target rules for targets named ContinuousSubmit
 
-.PHONY : provided/date.o
+# Build rule for target.
+ContinuousSubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousSubmit
+.PHONY : ContinuousSubmit
+
+# fast build rule for target.
+ContinuousSubmit/fast:
+	$(MAKE) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
+.PHONY : ContinuousSubmit/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousCoverage
+
+# Build rule for target.
+ContinuousCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousCoverage
+.PHONY : ContinuousCoverage
+
+# fast build rule for target.
+ContinuousCoverage/fast:
+	$(MAKE) -f CMakeFiles/ContinuousCoverage.dir/build.make CMakeFiles/ContinuousCoverage.dir/build
+.PHONY : ContinuousCoverage/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousTest
+
+# Build rule for target.
+ContinuousTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousTest
+.PHONY : ContinuousTest
+
+# fast build rule for target.
+ContinuousTest/fast:
+	$(MAKE) -f CMakeFiles/ContinuousTest.dir/build.make CMakeFiles/ContinuousTest.dir/build
+.PHONY : ContinuousTest/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousBuild
+
+# Build rule for target.
+ContinuousBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousBuild
+.PHONY : ContinuousBuild
+
+# fast build rule for target.
+ContinuousBuild/fast:
+	$(MAKE) -f CMakeFiles/ContinuousBuild.dir/build.make CMakeFiles/ContinuousBuild.dir/build
+.PHONY : ContinuousBuild/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousMemCheck
+
+# Build rule for target.
+ContinuousMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousMemCheck
+.PHONY : ContinuousMemCheck
+
+# fast build rule for target.
+ContinuousMemCheck/fast:
+	$(MAKE) -f CMakeFiles/ContinuousMemCheck.dir/build.make CMakeFiles/ContinuousMemCheck.dir/build
+.PHONY : ContinuousMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named Nightly
+
+# Build rule for target.
+Nightly: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Nightly
+.PHONY : Nightly
+
+# fast build rule for target.
+Nightly/fast:
+	$(MAKE) -f CMakeFiles/Nightly.dir/build.make CMakeFiles/Nightly.dir/build
+.PHONY : Nightly/fast
+
+#=============================================================================
+# Target rules for targets named NightlyTest
+
+# Build rule for target.
+NightlyTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyTest
+.PHONY : NightlyTest
+
+# fast build rule for target.
+NightlyTest/fast:
+	$(MAKE) -f CMakeFiles/NightlyTest.dir/build.make CMakeFiles/NightlyTest.dir/build
+.PHONY : NightlyTest/fast
+
+#=============================================================================
+# Target rules for targets named NightlyUpdate
+
+# Build rule for target.
+NightlyUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyUpdate
+.PHONY : NightlyUpdate
+
+# fast build rule for target.
+NightlyUpdate/fast:
+	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
+.PHONY : NightlyUpdate/fast
+
+#=============================================================================
+# Target rules for targets named progB
+
+# Build rule for target.
+progB: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 progB
+.PHONY : progB
+
+# fast build rule for target.
+progB/fast:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/build
+.PHONY : progB/fast
+
+#=============================================================================
+# Target rules for targets named Continuous
+
+# Build rule for target.
+Continuous: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Continuous
+.PHONY : Continuous
+
+# fast build rule for target.
+Continuous/fast:
+	$(MAKE) -f CMakeFiles/Continuous.dir/build.make CMakeFiles/Continuous.dir/build
+.PHONY : Continuous/fast
+
+#=============================================================================
+# Target rules for targets named NightlyBuild
+
+# Build rule for target.
+NightlyBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyBuild
+.PHONY : NightlyBuild
+
+# fast build rule for target.
+NightlyBuild/fast:
+	$(MAKE) -f CMakeFiles/NightlyBuild.dir/build.make CMakeFiles/NightlyBuild.dir/build
+.PHONY : NightlyBuild/fast
+
+#=============================================================================
+# Target rules for targets named NightlyStart
+
+# Build rule for target.
+NightlyStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyStart
+.PHONY : NightlyStart
+
+# fast build rule for target.
+NightlyStart/fast:
+	$(MAKE) -f CMakeFiles/NightlyStart.dir/build.make CMakeFiles/NightlyStart.dir/build
+.PHONY : NightlyStart/fast
+
+#=============================================================================
+# Target rules for targets named NightlyMemoryCheck
+
+# Build rule for target.
+NightlyMemoryCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemoryCheck
+.PHONY : NightlyMemoryCheck
+
+# fast build rule for target.
+NightlyMemoryCheck/fast:
+	$(MAKE) -f CMakeFiles/NightlyMemoryCheck.dir/build.make CMakeFiles/NightlyMemoryCheck.dir/build
+.PHONY : NightlyMemoryCheck/fast
+
+#=============================================================================
+# Target rules for targets named NightlyMemCheck
+
+# Build rule for target.
+NightlyMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemCheck
+.PHONY : NightlyMemCheck
+
+# fast build rule for target.
+NightlyMemCheck/fast:
+	$(MAKE) -f CMakeFiles/NightlyMemCheck.dir/build.make CMakeFiles/NightlyMemCheck.dir/build
+.PHONY : NightlyMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalStart
+
+# Build rule for target.
+ExperimentalStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalStart
+.PHONY : ExperimentalStart
+
+# fast build rule for target.
+ExperimentalStart/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalStart.dir/build.make CMakeFiles/ExperimentalStart.dir/build
+.PHONY : ExperimentalStart/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousConfigure
+
+# Build rule for target.
+ContinuousConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousConfigure
+.PHONY : ContinuousConfigure
+
+# fast build rule for target.
+ContinuousConfigure/fast:
+	$(MAKE) -f CMakeFiles/ContinuousConfigure.dir/build.make CMakeFiles/ContinuousConfigure.dir/build
+.PHONY : ContinuousConfigure/fast
+
+#=============================================================================
+# Target rules for targets named NightlyCoverage
+
+# Build rule for target.
+NightlyCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyCoverage
+.PHONY : NightlyCoverage
+
+# fast build rule for target.
+NightlyCoverage/fast:
+	$(MAKE) -f CMakeFiles/NightlyCoverage.dir/build.make CMakeFiles/NightlyCoverage.dir/build
+.PHONY : NightlyCoverage/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalUpdate
+
+# Build rule for target.
+ExperimentalUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalUpdate
+.PHONY : ExperimentalUpdate
+
+# fast build rule for target.
+ExperimentalUpdate/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalUpdate.dir/build.make CMakeFiles/ExperimentalUpdate.dir/build
+.PHONY : ExperimentalUpdate/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalConfigure
+
+# Build rule for target.
+ExperimentalConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalConfigure
+.PHONY : ExperimentalConfigure
+
+# fast build rule for target.
+ExperimentalConfigure/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalConfigure.dir/build.make CMakeFiles/ExperimentalConfigure.dir/build
+.PHONY : ExperimentalConfigure/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalCoverage
+
+# Build rule for target.
+ExperimentalCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalCoverage
+.PHONY : ExperimentalCoverage
+
+# fast build rule for target.
+ExperimentalCoverage/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalCoverage.dir/build.make CMakeFiles/ExperimentalCoverage.dir/build
+.PHONY : ExperimentalCoverage/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalBuild
+
+# Build rule for target.
+ExperimentalBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalBuild
+.PHONY : ExperimentalBuild
+
+# fast build rule for target.
+ExperimentalBuild/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalBuild.dir/build.make CMakeFiles/ExperimentalBuild.dir/build
+.PHONY : ExperimentalBuild/fast
+
+#=============================================================================
+# Target rules for targets named NightlyConfigure
+
+# Build rule for target.
+NightlyConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyConfigure
+.PHONY : NightlyConfigure
+
+# fast build rule for target.
+NightlyConfigure/fast:
+	$(MAKE) -f CMakeFiles/NightlyConfigure.dir/build.make CMakeFiles/NightlyConfigure.dir/build
+.PHONY : NightlyConfigure/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalTest
+
+# Build rule for target.
+ExperimentalTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalTest
+.PHONY : ExperimentalTest
+
+# fast build rule for target.
+ExperimentalTest/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalTest.dir/build.make CMakeFiles/ExperimentalTest.dir/build
+.PHONY : ExperimentalTest/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalMemCheck
+
+# Build rule for target.
+ExperimentalMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalMemCheck
+.PHONY : ExperimentalMemCheck
+
+# fast build rule for target.
+ExperimentalMemCheck/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalMemCheck.dir/build.make CMakeFiles/ExperimentalMemCheck.dir/build
+.PHONY : ExperimentalMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named Experimental
+
+# Build rule for target.
+Experimental: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Experimental
+.PHONY : Experimental
+
+# fast build rule for target.
+Experimental/fast:
+	$(MAKE) -f CMakeFiles/Experimental.dir/build.make CMakeFiles/Experimental.dir/build
+.PHONY : Experimental/fast
+
+#=============================================================================
+# Target rules for targets named NightlySubmit
+
+# Build rule for target.
+NightlySubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlySubmit
+.PHONY : NightlySubmit
+
+# fast build rule for target.
+NightlySubmit/fast:
+	$(MAKE) -f CMakeFiles/NightlySubmit.dir/build.make CMakeFiles/NightlySubmit.dir/build
+.PHONY : NightlySubmit/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalSubmit
+
+# Build rule for target.
+ExperimentalSubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalSubmit
+.PHONY : ExperimentalSubmit
+
+# fast build rule for target.
+ExperimentalSubmit/fast:
+	$(MAKE) -f CMakeFiles/ExperimentalSubmit.dir/build.make CMakeFiles/ExperimentalSubmit.dir/build
+.PHONY : ExperimentalSubmit/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousStart
+
+# Build rule for target.
+ContinuousStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousStart
+.PHONY : ContinuousStart
+
+# fast build rule for target.
+ContinuousStart/fast:
+	$(MAKE) -f CMakeFiles/ContinuousStart.dir/build.make CMakeFiles/ContinuousStart.dir/build
+.PHONY : ContinuousStart/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousUpdate
+
+# Build rule for target.
+ContinuousUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousUpdate
+.PHONY : ContinuousUpdate
+
+# fast build rule for target.
+ContinuousUpdate/fast:
+	$(MAKE) -f CMakeFiles/ContinuousUpdate.dir/build.make CMakeFiles/ContinuousUpdate.dir/build
+.PHONY : ContinuousUpdate/fast
+
+base_event.o: base_event.cpp.o
+
+.PHONY : base_event.o
 
 # target to build an object file
-provided/date.c.o:
-	$(MAKE) -f CMakeFiles/date.dir/build.make CMakeFiles/date.dir/provided/date.c.o
-.PHONY : provided/date.c.o
+base_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/base_event.cpp.o
+.PHONY : base_event.cpp.o
 
-provided/date.i: provided/date.c.i
+base_event.i: base_event.cpp.i
 
-.PHONY : provided/date.i
+.PHONY : base_event.i
 
 # target to preprocess a source file
-provided/date.c.i:
-	$(MAKE) -f CMakeFiles/date.dir/build.make CMakeFiles/date.dir/provided/date.c.i
-.PHONY : provided/date.c.i
+base_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/base_event.cpp.i
+.PHONY : base_event.cpp.i
 
-provided/date.s: provided/date.c.s
+base_event.s: base_event.cpp.s
 
-.PHONY : provided/date.s
+.PHONY : base_event.s
 
 # target to generate assembly for a file
-provided/date.c.s:
-	$(MAKE) -f CMakeFiles/date.dir/build.make CMakeFiles/date.dir/provided/date.c.s
-.PHONY : provided/date.c.s
+base_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/base_event.cpp.s
+.PHONY : base_event.cpp.s
+
+closed_event.o: closed_event.cpp.o
+
+.PHONY : closed_event.o
+
+# target to build an object file
+closed_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/closed_event.cpp.o
+.PHONY : closed_event.cpp.o
+
+closed_event.i: closed_event.cpp.i
+
+.PHONY : closed_event.i
+
+# target to preprocess a source file
+closed_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/closed_event.cpp.i
+.PHONY : closed_event.cpp.i
+
+closed_event.s: closed_event.cpp.s
+
+.PHONY : closed_event.s
+
+# target to generate assembly for a file
+closed_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/closed_event.cpp.s
+.PHONY : closed_event.cpp.s
+
+custom_event.o: custom_event.cpp.o
+
+.PHONY : custom_event.o
+
+# target to build an object file
+custom_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/custom_event.cpp.o
+.PHONY : custom_event.cpp.o
+
+custom_event.i: custom_event.cpp.i
+
+.PHONY : custom_event.i
+
+# target to preprocess a source file
+custom_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/custom_event.cpp.i
+.PHONY : custom_event.cpp.i
+
+custom_event.s: custom_event.cpp.s
+
+.PHONY : custom_event.s
+
+# target to generate assembly for a file
+custom_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/custom_event.cpp.s
+.PHONY : custom_event.cpp.s
+
+date_wrap.o: date_wrap.cpp.o
+
+.PHONY : date_wrap.o
+
+# target to build an object file
+date_wrap.cpp.o:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/date_wrap.cpp.o
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/date_wrap.cpp.o
+.PHONY : date_wrap.cpp.o
+
+date_wrap.i: date_wrap.cpp.i
+
+.PHONY : date_wrap.i
+
+# target to preprocess a source file
+date_wrap.cpp.i:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/date_wrap.cpp.i
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/date_wrap.cpp.i
+.PHONY : date_wrap.cpp.i
+
+date_wrap.s: date_wrap.cpp.s
+
+.PHONY : date_wrap.s
+
+# target to generate assembly for a file
+date_wrap.cpp.s:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/date_wrap.cpp.s
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/date_wrap.cpp.s
+.PHONY : date_wrap.cpp.s
+
+event_container.o: event_container.cpp.o
+
+.PHONY : event_container.o
+
+# target to build an object file
+event_container.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/event_container.cpp.o
+.PHONY : event_container.cpp.o
+
+event_container.i: event_container.cpp.i
+
+.PHONY : event_container.i
+
+# target to preprocess a source file
+event_container.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/event_container.cpp.i
+.PHONY : event_container.cpp.i
+
+event_container.s: event_container.cpp.s
+
+.PHONY : event_container.s
+
+# target to generate assembly for a file
+event_container.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/event_container.cpp.s
+.PHONY : event_container.cpp.s
+
+festival.o: festival.cpp.o
+
+.PHONY : festival.o
+
+# target to build an object file
+festival.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/festival.cpp.o
+.PHONY : festival.cpp.o
+
+festival.i: festival.cpp.i
+
+.PHONY : festival.i
+
+# target to preprocess a source file
+festival.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/festival.cpp.i
+.PHONY : festival.cpp.i
+
+festival.s: festival.cpp.s
+
+.PHONY : festival.s
+
+# target to generate assembly for a file
+festival.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/festival.cpp.s
+.PHONY : festival.cpp.s
+
+one_time_event.o: one_time_event.cpp.o
+
+.PHONY : one_time_event.o
+
+# target to build an object file
+one_time_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/one_time_event.cpp.o
+.PHONY : one_time_event.cpp.o
+
+one_time_event.i: one_time_event.cpp.i
+
+.PHONY : one_time_event.i
+
+# target to preprocess a source file
+one_time_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/one_time_event.cpp.i
+.PHONY : one_time_event.cpp.i
+
+one_time_event.s: one_time_event.cpp.s
+
+.PHONY : one_time_event.s
+
+# target to generate assembly for a file
+one_time_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/one_time_event.cpp.s
+.PHONY : one_time_event.cpp.s
+
+open_event.o: open_event.cpp.o
+
+.PHONY : open_event.o
+
+# target to build an object file
+open_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/open_event.cpp.o
+.PHONY : open_event.cpp.o
+
+open_event.i: open_event.cpp.i
+
+.PHONY : open_event.i
+
+# target to preprocess a source file
+open_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/open_event.cpp.i
+.PHONY : open_event.cpp.i
+
+open_event.s: open_event.cpp.s
+
+.PHONY : open_event.s
+
+# target to generate assembly for a file
+open_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/open_event.cpp.s
+.PHONY : open_event.cpp.s
+
+recurring_event.o: recurring_event.cpp.o
+
+.PHONY : recurring_event.o
+
+# target to build an object file
+recurring_event.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/recurring_event.cpp.o
+.PHONY : recurring_event.cpp.o
+
+recurring_event.i: recurring_event.cpp.i
+
+.PHONY : recurring_event.i
+
+# target to preprocess a source file
+recurring_event.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/recurring_event.cpp.i
+.PHONY : recurring_event.cpp.i
+
+recurring_event.s: recurring_event.cpp.s
+
+.PHONY : recurring_event.s
+
+# target to generate assembly for a file
+recurring_event.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/recurring_event.cpp.s
+.PHONY : recurring_event.cpp.s
+
+test_partA.o: test_partA.cpp.o
+
+.PHONY : test_partA.o
+
+# target to build an object file
+test_partA.cpp.o:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/test_partA.cpp.o
+.PHONY : test_partA.cpp.o
+
+test_partA.i: test_partA.cpp.i
+
+.PHONY : test_partA.i
+
+# target to preprocess a source file
+test_partA.cpp.i:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/test_partA.cpp.i
+.PHONY : test_partA.cpp.i
+
+test_partA.s: test_partA.cpp.s
+
+.PHONY : test_partA.s
+
+# target to generate assembly for a file
+test_partA.cpp.s:
+	$(MAKE) -f CMakeFiles/progA.dir/build.make CMakeFiles/progA.dir/test_partA.cpp.s
+.PHONY : test_partA.cpp.s
+
+test_partB.o: test_partB.cpp.o
+
+.PHONY : test_partB.o
+
+# target to build an object file
+test_partB.cpp.o:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/test_partB.cpp.o
+.PHONY : test_partB.cpp.o
+
+test_partB.i: test_partB.cpp.i
+
+.PHONY : test_partB.i
+
+# target to preprocess a source file
+test_partB.cpp.i:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/test_partB.cpp.i
+.PHONY : test_partB.cpp.i
+
+test_partB.s: test_partB.cpp.s
+
+.PHONY : test_partB.s
+
+# target to generate assembly for a file
+test_partB.cpp.s:
+	$(MAKE) -f CMakeFiles/progB.dir/build.make CMakeFiles/progB.dir/test_partB.cpp.s
+.PHONY : test_partB.cpp.s
 
 # Help Target
 help:
@@ -174,11 +857,73 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... date"
-	@echo "... provided/date.o"
-	@echo "... provided/date.i"
-	@echo "... provided/date.s"
+	@echo "... test"
+	@echo "... Continuous"
+	@echo "... ContinuousBuild"
+	@echo "... ContinuousConfigure"
+	@echo "... ContinuousCoverage"
+	@echo "... ContinuousMemCheck"
+	@echo "... ContinuousStart"
+	@echo "... ContinuousSubmit"
+	@echo "... ContinuousTest"
+	@echo "... ContinuousUpdate"
+	@echo "... Experimental"
+	@echo "... ExperimentalBuild"
+	@echo "... ExperimentalConfigure"
+	@echo "... ExperimentalCoverage"
+	@echo "... ExperimentalMemCheck"
+	@echo "... ExperimentalStart"
+	@echo "... ExperimentalSubmit"
+	@echo "... ExperimentalTest"
+	@echo "... ExperimentalUpdate"
+	@echo "... Nightly"
+	@echo "... NightlyBuild"
+	@echo "... NightlyConfigure"
+	@echo "... NightlyCoverage"
+	@echo "... NightlyMemCheck"
+	@echo "... NightlyMemoryCheck"
+	@echo "... NightlyStart"
+	@echo "... NightlySubmit"
+	@echo "... NightlyTest"
+	@echo "... NightlyUpdate"
+	@echo "... progA"
+	@echo "... progB"
+	@echo "... base_event.o"
+	@echo "... base_event.i"
+	@echo "... base_event.s"
+	@echo "... closed_event.o"
+	@echo "... closed_event.i"
+	@echo "... closed_event.s"
+	@echo "... custom_event.o"
+	@echo "... custom_event.i"
+	@echo "... custom_event.s"
+	@echo "... date_wrap.o"
+	@echo "... date_wrap.i"
+	@echo "... date_wrap.s"
+	@echo "... event_container.o"
+	@echo "... event_container.i"
+	@echo "... event_container.s"
+	@echo "... festival.o"
+	@echo "... festival.i"
+	@echo "... festival.s"
+	@echo "... one_time_event.o"
+	@echo "... one_time_event.i"
+	@echo "... one_time_event.s"
+	@echo "... open_event.o"
+	@echo "... open_event.i"
+	@echo "... open_event.s"
+	@echo "... recurring_event.o"
+	@echo "... recurring_event.i"
+	@echo "... recurring_event.s"
+	@echo "... test_partA.o"
+	@echo "... test_partA.i"
+	@echo "... test_partA.s"
+	@echo "... test_partB.o"
+	@echo "... test_partB.i"
+	@echo "... test_partB.s"
 .PHONY : help
 
 

@@ -60,10 +60,10 @@ RM = /home/mtm/cmake-3.17.0-Linux-x86_64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noaro/mtm/ex3/ex3
+CMAKE_SOURCE_DIR = /home/gali/mtm/ex3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noaro/mtm/ex3/ex3/build
+CMAKE_BINARY_DIR = /home/gali/mtm/ex3/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/progA.dir/depend.make
@@ -74,45 +74,45 @@ include CMakeFiles/progA.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/progA.dir/flags.make
 
-CMakeFiles/progA.dir/provided/test_partA.cpp.o: CMakeFiles/progA.dir/flags.make
-CMakeFiles/progA.dir/provided/test_partA.cpp.o: ../provided/test_partA.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/noaro/mtm/ex3/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/progA.dir/provided/test_partA.cpp.o"
-	/usr/local/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/progA.dir/provided/test_partA.cpp.o -c /home/noaro/mtm/ex3/ex3/provided/test_partA.cpp
+CMakeFiles/progA.dir/test_partA.cpp.o: CMakeFiles/progA.dir/flags.make
+CMakeFiles/progA.dir/test_partA.cpp.o: ../test_partA.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gali/mtm/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/progA.dir/test_partA.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/progA.dir/test_partA.cpp.o -c /home/gali/mtm/ex3/test_partA.cpp
 
-CMakeFiles/progA.dir/provided/test_partA.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/progA.dir/provided/test_partA.cpp.i"
-	/usr/local/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/noaro/mtm/ex3/ex3/provided/test_partA.cpp > CMakeFiles/progA.dir/provided/test_partA.cpp.i
+CMakeFiles/progA.dir/test_partA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/progA.dir/test_partA.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gali/mtm/ex3/test_partA.cpp > CMakeFiles/progA.dir/test_partA.cpp.i
 
-CMakeFiles/progA.dir/provided/test_partA.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/progA.dir/provided/test_partA.cpp.s"
-	/usr/local/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/noaro/mtm/ex3/ex3/provided/test_partA.cpp -o CMakeFiles/progA.dir/provided/test_partA.cpp.s
+CMakeFiles/progA.dir/test_partA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/progA.dir/test_partA.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gali/mtm/ex3/test_partA.cpp -o CMakeFiles/progA.dir/test_partA.cpp.s
 
-CMakeFiles/progA.dir/partA/date_wrap.cpp.o: CMakeFiles/progA.dir/flags.make
-CMakeFiles/progA.dir/partA/date_wrap.cpp.o: ../partA/date_wrap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/noaro/mtm/ex3/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/progA.dir/partA/date_wrap.cpp.o"
-	/usr/local/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/progA.dir/partA/date_wrap.cpp.o -c /home/noaro/mtm/ex3/ex3/partA/date_wrap.cpp
+CMakeFiles/progA.dir/date_wrap.cpp.o: CMakeFiles/progA.dir/flags.make
+CMakeFiles/progA.dir/date_wrap.cpp.o: ../date_wrap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gali/mtm/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/progA.dir/date_wrap.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/progA.dir/date_wrap.cpp.o -c /home/gali/mtm/ex3/date_wrap.cpp
 
-CMakeFiles/progA.dir/partA/date_wrap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/progA.dir/partA/date_wrap.cpp.i"
-	/usr/local/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/noaro/mtm/ex3/ex3/partA/date_wrap.cpp > CMakeFiles/progA.dir/partA/date_wrap.cpp.i
+CMakeFiles/progA.dir/date_wrap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/progA.dir/date_wrap.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gali/mtm/ex3/date_wrap.cpp > CMakeFiles/progA.dir/date_wrap.cpp.i
 
-CMakeFiles/progA.dir/partA/date_wrap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/progA.dir/partA/date_wrap.cpp.s"
-	/usr/local/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/noaro/mtm/ex3/ex3/partA/date_wrap.cpp -o CMakeFiles/progA.dir/partA/date_wrap.cpp.s
+CMakeFiles/progA.dir/date_wrap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/progA.dir/date_wrap.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gali/mtm/ex3/date_wrap.cpp -o CMakeFiles/progA.dir/date_wrap.cpp.s
 
 # Object files for target progA
 progA_OBJECTS = \
-"CMakeFiles/progA.dir/provided/test_partA.cpp.o" \
-"CMakeFiles/progA.dir/partA/date_wrap.cpp.o"
+"CMakeFiles/progA.dir/test_partA.cpp.o" \
+"CMakeFiles/progA.dir/date_wrap.cpp.o"
 
 # External object files for target progA
 progA_EXTERNAL_OBJECTS =
 
-progA: CMakeFiles/progA.dir/provided/test_partA.cpp.o
-progA: CMakeFiles/progA.dir/partA/date_wrap.cpp.o
+progA: CMakeFiles/progA.dir/test_partA.cpp.o
+progA: CMakeFiles/progA.dir/date_wrap.cpp.o
 progA: CMakeFiles/progA.dir/build.make
 progA: CMakeFiles/progA.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/noaro/mtm/ex3/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable progA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gali/mtm/ex3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable progA"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/progA.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -125,6 +125,6 @@ CMakeFiles/progA.dir/clean:
 .PHONY : CMakeFiles/progA.dir/clean
 
 CMakeFiles/progA.dir/depend:
-	cd /home/noaro/mtm/ex3/ex3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/noaro/mtm/ex3/ex3 /home/noaro/mtm/ex3/ex3 /home/noaro/mtm/ex3/ex3/build /home/noaro/mtm/ex3/ex3/build /home/noaro/mtm/ex3/ex3/build/CMakeFiles/progA.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gali/mtm/ex3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gali/mtm/ex3 /home/gali/mtm/ex3 /home/gali/mtm/ex3/build /home/gali/mtm/ex3/build /home/gali/mtm/ex3/build/CMakeFiles/progA.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/progA.dir/depend
 
