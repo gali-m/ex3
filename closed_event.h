@@ -13,7 +13,8 @@ namespace mtm {
     
     public:
         ClosedEvent(const DateWrap date, const std::string name);
-        // ClosedEvent(const ClosedEvent& open_event);
+        ClosedEvent(const ClosedEvent& closed_event);
+        ~ClosedEvent();
 
         void addInvitee(int student_id);
         void registerParticipant(int student_id) override;
