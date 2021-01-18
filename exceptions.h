@@ -25,6 +25,10 @@ namespace mtm
     class DateMismatch : public mtm::Exception {};
     class InvalidNumber : public mtm::Exception {};
     class InvalidInterval : public mtm::Exception {};
+
+    //part C
+    class EventAlreadyExists :public mtm::Exception {};
+    class EventDoesNotExist :public mtm::Exception {};
         
     // static func
     class StudentInList : public mtm::Exception {};

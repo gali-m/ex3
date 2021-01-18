@@ -49,6 +49,7 @@ namespace mtm {
         virtual BaseEvent* clone() const = 0;
 
         friend class EventContainer;
+        friend class Schedule;
 
     protected:
         bool is_valid_student(int student_id);
