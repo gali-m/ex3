@@ -38,10 +38,6 @@ namespace mtm {
     StudentList::StudentList() : student(NULL) {}
 
     StudentList::StudentList(StudentNode* student) : student(student) {}
-    // StudentList::StudentList(StudentNode* student)
-    // {
-    //     this.student = student; 
-    // }
 
     StudentList::~StudentList()
     {

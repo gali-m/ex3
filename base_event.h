@@ -23,6 +23,7 @@ namespace mtm {
         friend class BaseEvent;
     };
 
+    // TODO: general linked list
     struct StudentList
     {
         StudentNode* student;
