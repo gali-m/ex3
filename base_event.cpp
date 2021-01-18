@@ -178,6 +178,12 @@ namespace mtm {
             current = current->next;
         }
 
+        if(before_current == NULL)
+        {
+            this->students_list.student = new StudentNode(student_id, current);
+            return;
+        }
+
         before_current->next = new StudentNode(student_id, (*before_current).next);
     }
 
