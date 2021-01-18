@@ -151,7 +151,7 @@ namespace mtm {
 
         while (current_student != NULL)
         {
-            output << this->students_list.student << "\n";
+            output << current_student->student_id << "\n";
             current_student = current_student->next;
         }
     }
