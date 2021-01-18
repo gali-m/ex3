@@ -17,7 +17,8 @@ namespace mtm {
 
         StudentNode(int student_id, StudentNode* next = NULL);
         // ~StudentNode();
-        StudentNode(const StudentNode* student_node);
+        // StudentNode(const StudentNode* student_node);
+        // StudentNode* copy_students_list(StudentNode* new_students_list, const StudentNode* students_list);
         // StudentNode& operator+=(StudentNode* student);
 
         friend class BaseEvent;
@@ -39,6 +40,7 @@ namespace mtm {
     
     public:
         BaseEvent(DateWrap date, std::string name);
+        BaseEvent(const BaseEvent& open_event);
         virtual ~BaseEvent();
         // BaseEvent(const BaseEvent&);
 
@@ -54,6 +56,7 @@ namespace mtm {
         bool is_valid_student(int student_id);
         bool is_student_in_list(StudentNode* students_list, int student_id);
         void add_to_students_list(StudentNode* students_list, int student_id);
+        StudentNode* copy_students_list(StudentNode* new_students_list, StudentNode* students_list);
     };
 
 }

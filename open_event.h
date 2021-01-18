@@ -12,7 +12,7 @@ namespace mtm {
     
     public:
         OpenEvent(const DateWrap date, const std::string name);
-        // OpenEvent(const OpenEvent& open_event);
+        OpenEvent(const OpenEvent& open_event);
 
         // void registerParticipant(int student_id);
         BaseEvent* clone() const override;

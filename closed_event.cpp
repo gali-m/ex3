@@ -12,18 +12,20 @@ namespace mtm {
     
     ClosedEvent::ClosedEvent(const DateWrap date, const std::string name) : BaseEvent(date, name), guest_list(NULL) {}
 
-    ClosedEvent::ClosedEvent(const ClosedEvent& closed_event) : BaseEvent(closed_event.date, closed_event.name)
+    ClosedEvent::ClosedEvent(const ClosedEvent& closed_event) : BaseEvent(closed_event)
     {
-        if(closed_event.students_list != NULL)
-        {
-            this->students_list = new StudentNode(closed_event.students_list);
-        }
+        // if(closed_event.students_list != NULL)
+        // {
+        //     this->students_list = new StudentNode(closed_event.students_list);
+        // }
 
-        if(closed_event.guest_list != NULL)
-        {
-            this->guest_list = new StudentNode(closed_event.guest_list);
-        }
+        // if(closed_event.guest_list != NULL)
+        // {
+        //     this->guest_list = new StudentNode(closed_event.guest_list);
+        // }
+        this->guest_list = copy_students_list(this->guest_list, closed_event.students_list);
     }
+
 
     ClosedEvent::~ClosedEvent()
     {

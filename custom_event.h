@@ -19,12 +19,12 @@ namespace mtm {
         CustomEvent(DateWrap date, std::string name, CanRegister can_register_func) : 
             BaseEvent(date, name), can_register_func(can_register_func) {}
 
-        CustomEvent(const CustomEvent& custom_event): BaseEvent(custom_event.date, custom_event.name)
+        CustomEvent(const CustomEvent& custom_event): BaseEvent(custom_event)
         {
-            if(custom_event.students_list != NULL)
-            {
-                this->students_list = new StudentNode(custom_event.students_list);
-            }
+            // if(custom_event.students_list != NULL)
+            // {
+            //     this->students_list = new StudentNode(custom_event.students_list);
+            // }
             this->can_register_func = custom_event.can_register_func;
         }
 

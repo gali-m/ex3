@@ -12,22 +12,49 @@ namespace mtm {
     StudentNode::StudentNode(int student_id, StudentNode* next) : student_id(student_id), next(next) {}
 
     //TODO: fix studenNode copy
-    StudentNode::StudentNode(const StudentNode* student_node)
-    {
-        if (student_node != NULL)
-        {
-            this->student_id = student_node->student_id;
+    // StudentNode::StudentNode(const StudentNode* student_node)
+    // {
 
-            if (student_node->next == NULL)
-            {
-                this->next = NULL;
-            }
-            else 
-            {
-                this->next = new StudentNode(student_node->next->student_id, student_node->next->next);
-            }
-        }
-    }
+    //     // this = copy_students_list(this, student_node);
+    //     // if (student_node != NULL)
+    //     // {
+    //     //     this->student_id = student_node->student_id;
+
+    //     //     if (student_node->next == NULL)
+    //     //     {
+    //     //         this->next = NULL;
+    //     //     }
+    //     //     else 
+    //     //     {
+    //     //         this->next = new StudentNode(student_node->next->student_id, student_node->next->next);
+    //     //     }
+    //     // }
+    // }
+
+    // StudentNode* StudentNode::copy_students_list(StudentNode* new_students_list, const StudentNode* students_list)
+    // {
+    //     if(students_list == NULL)
+    //     {
+    //         new_students_list = NULL;
+    //         return new_students_list;
+    //     }
+
+    //     // while(students_list->next != NULL)
+    //     // {
+    //     //     new_students_list = new StudentNode(students_list->student_id, students_list->next);
+    //     //     new_students_list = new_students_list->next;
+    //     // }
+
+    //     StudentNode* current = new_students_list;
+    //     StudentNode* next = current->next;
+
+    //     while (next != NULL) {
+    //         current = new StudentNode(students_list->student_id, students_list->next);
+    //         next = current->next;
+    //         current = next;
+    //     }
+    //     return new_students_list;
+    // }
 
     // StudentNode::~StudentNode()
     // {
@@ -72,6 +99,52 @@ namespace mtm {
     
 
     BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name), students_list(NULL) {}
+
+    BaseEvent::BaseEvent(const BaseEvent& base_event) : date(base_event.date), name(base_event.name) 
+    {
+        //// this->students_list = new StudentNode(base_event.students_list);
+        // if(base_event.students_list == NULL)
+        // {
+        //     this->students_list = NULL;
+        // }
+        // else
+        // {
+        //     StudentNode* this_current = this->students_list;
+        //     StudentNode* base_event_current = base_event.students_list;
+
+        //     while (base_event_current != NULL)
+        //     {
+        //         this_current = new StudentNode(base_event_current->student_id, base_event_current->next);
+        //         base_event_current = base_event_current->next;
+        //         this_current = this_current->next;
+        //     }
+        // }
+        this->students_list = copy_students_list(this->students_list, base_event.students_list);
+    }
+
+    StudentNode* BaseEvent::copy_students_list(StudentNode* new_students_list, StudentNode* students_list)
+    {
+        if(students_list == NULL)
+        {
+            new_students_list = NULL;
+        }
+        else
+        {
+            StudentNode* base_event_current = students_list;
+            new_students_list = new StudentNode(base_event_current->student_id, NULL);
+            StudentNode* this_current = new_students_list;
+
+            base_event_current = base_event_current->next;
+
+            while (base_event_current != NULL)
+            {
+                this_current->next = new StudentNode(base_event_current->student_id, NULL);
+                base_event_current = base_event_current->next;
+                this_current = this_current->next;
+            }
+        }
+        return new_students_list;
+    }
 
     BaseEvent::~BaseEvent() 
     {

@@ -12,11 +12,12 @@ namespace mtm {
     
     OpenEvent::OpenEvent(const DateWrap date, const std::string name) : BaseEvent(date, name) {}
 
-    // OpenEvent::OpenEvent(const OpenEvent& open_event)
+    OpenEvent::OpenEvent(const OpenEvent& open_event) : BaseEvent(open_event) {}
     // {
-    //     this->date = open_event.date;
-    //     this->name = open_event.name;
-    //     this->students_list = open_event.students_list;
+    //     if(open_event.students_list != NULL)
+    //     {
+    //         this->students_list = new StudentNode(open_event.students_list);
+    //     }
     // }
 
     // void OpenEvent::registerParticipant(int student_id)
