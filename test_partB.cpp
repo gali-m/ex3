@@ -76,7 +76,7 @@ const Test tests[] = {test1, test2};
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        // test1();
+        test1();
         test2();
     } else if (argc > 2) {
         std::cout << "invalid arguments" << std::endl;
