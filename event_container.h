@@ -39,6 +39,7 @@ namespace mtm
             bool operator!=(const EventIterator& event_iterator);
 
             friend class EventContainer;
+            friend class Schedule;
         };
 
     protected:
