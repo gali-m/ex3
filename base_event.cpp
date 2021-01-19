@@ -175,7 +175,7 @@ namespace mtm {
 
     bool BaseEvent::is_valid_student(int student_id)
     {
-        if (student_id > MAX_STUDENT_ID && student_id < MIN_STUDENT_ID)
+        if (student_id > MAX_STUDENT_ID || student_id < MIN_STUDENT_ID)
         {
             throw InvalidStudent();
             return false;
@@ -214,6 +214,7 @@ namespace mtm {
         is_valid_student(student_id);
 
         StudentNode* current_student = this->students_list;
+        StudentNode* before_current = NULL;
 
         while (current_student != NULL)
         {
@@ -221,17 +222,20 @@ namespace mtm {
             {
                 StudentNode* node_to_remove = current_student;
 
-                if(this->students_list == current_student)
+                if(before_current == NULL)
                 {
                     this->students_list = current_student->next;
                 }
-
-                current_student = current_student->next;
+                else
+                {
+                    before_current->next = current_student->next;
+                }
 
                 node_to_remove->next = NULL;
                 delete node_to_remove;
                 return;
             }
+            before_current = current_student;
             current_student = current_student->next;
         }
 
