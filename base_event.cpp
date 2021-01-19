@@ -175,7 +175,7 @@ namespace mtm {
 
     bool BaseEvent::is_valid_student(int student_id)
     {
-        if (student_id > MAX_STUDENT_ID && student_id < MIN_STUDENT_ID)
+        if (student_id > MAX_STUDENT_ID || student_id < MIN_STUDENT_ID)
         {
             throw InvalidStudent();
             return false;
