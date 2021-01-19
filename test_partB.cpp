@@ -1,4 +1,3 @@
-
 #include "base_event.h"
 #include "closed_event.h"
 #include "custom_event.h"
@@ -31,7 +30,7 @@ using mtm::Festival;
 using mtm::RecurringEvent;
 using mtm::OneTimeEvent;
 
-static const std::string FILE_PATH = "testOutputs/partB";
+static const std::string FILE_PATH = "../testOutputs/partB";
 
 /**Prints which assertion failed and in which file*/
 #define ASSERT_TEST(expr)                                                         \
@@ -92,12 +91,6 @@ bool matchFiles(const std::string& out, const std::string& exp) {
     return true;
 }
 
-void printEventsShort(mtm::EventContainer& events) {
-    for (Iter iter = events.begin(); iter != events.end(); ++iter) {
-        mtm::BaseEvent& event = *iter;
-        event.printShort(std::cout);
-    }
-}
 void printEventsShort(mtm::EventContainer& events, ofstream& stream) {
     for (Iter iter = events.begin(); iter != events.end(); ++iter) {
         mtm::BaseEvent& event = *iter;
@@ -149,24 +142,24 @@ public:
 /** HERE START THE TESTS*/
 bool test1SegelProvided() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test1SegelProvided.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test1SegelProvided.txt"))
     mtm::Festival festival(mtm::DateWrap(21, 10, 2020));
     festival.add(mtm::OpenEvent(mtm::DateWrap(21, 10, 2020), "Performance 1"));
     mtm::ClosedEvent closed(mtm::DateWrap(21, 10, 2020), "Performance 2");
     closed.addInvitee(1);
     closed.addInvitee(500);
     festival.add(closed);
-    printEventsShort(festival);
+    printEventsShort(festival, out);
 
     mtm::RecurringEvent<mtm::OpenEvent> recurring(mtm::DateWrap(21, 10, 2020),
                                                   "Wednesday Noon", 13, 7);
-    printEventsShort(recurring);
+    printEventsShort(recurring, out);
 
     mtm::OneTimeEvent<mtm::OpenEvent> one_time(mtm::DateWrap(2, 3, 80),
                                                "A long time ago");
-    printEventsShort(one_time);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/test1SegelProvided.txt")))
+    printEventsShort(one_time, out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/test1SegelProvided.txt")))
     return result;
 }
 
@@ -180,33 +173,24 @@ void test2SegelProvided_aux(mtm::BaseEvent& event, ofstream& stream) {
     clone->printLong(stream);
     delete clone;
 }
-void test2SegelProvided_aux(mtm::BaseEvent& event) {
-    event.registerParticipant(1);
-    event.registerParticipant(20000);
-    event.unregisterParticipant(1);
-    event.registerParticipant(3);
-    mtm::BaseEvent* clone = event.clone();
-    clone->printShort(std::cout);
-    clone->printLong(std::cout);
-    delete clone;
-}
+
 
 bool test2SegelProvided() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test2SegelProvided.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test2SegelProvided.txt"))
     mtm::OpenEvent open(mtm::DateWrap(21, 10, 2020), "An Open Event");
-    test2SegelProvided_aux(open);
+    test2SegelProvided_aux(open, out);
 
     mtm::ClosedEvent closed(mtm::DateWrap(21, 10, 2020), "A Closed Event");
     closed.addInvitee(1);
     closed.addInvitee(3);
     closed.addInvitee(20000);
-    test2SegelProvided_aux(closed);
+    test2SegelProvided_aux(closed, out);
     mtm::CustomEvent<StudentFilter> custom(mtm::DateWrap(21, 10, 2020),
                                            "A Custom Event", StudentFilter());
-    test2SegelProvided_aux(custom);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/test2SegelProvided.txt")))
+    test2SegelProvided_aux(custom, out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/test2SegelProvided.txt")))
     return result;
 }
 
@@ -216,24 +200,24 @@ bool test2SegelProvided() {
 bool testConstructorOpenEvent()
 {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testConstructorOpenEvent.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testConstructorOpenEvent.txt"))
     OpenEvent event1(DateWrap(1, 2, 2000), "event1");
-    event1.printShort(std::cout);
-    event1.printLong(std::cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testConstructorOpenEvent.txt")))
+    event1.printShort(out);
+    event1.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testConstructorOpenEvent.txt")))
     return result;
 }
 
 bool testRegisterParticipantOpenEvent()
 {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testRegisterParticipantOpenEvent.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testRegisterParticipantOpenEvent.txt"))
     try {
         OpenEvent event1(DateWrap(0, 1, 2000), "event1");
     }
     catch (mtm::InvalidDate&) {
-        cout << "InvalidDate" << endl;
+        out << "InvalidDate" << endl;
     }
     OpenEvent event1(DateWrap(1, 1, 2000), "event1");
     for (int i = 0; i < 10; i++) {
@@ -241,18 +225,18 @@ bool testRegisterParticipantOpenEvent()
             event1.registerParticipant(i);
         }
         catch (mtm::InvalidStudent&) {
-            cout << "InvalidStudent" << endl;
+            out << "InvalidStudent" << endl;
         }
     }
     try {
         event1.registerParticipant(2);
     }
     catch (mtm::AlreadyRegistered&) {
-        cout << "AlreadyRegistered" << endl;
+        out << "AlreadyRegistered" << endl;
     }
-    event1.printLong(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testRegisterParticipantOpenEvent.txt")))
+    event1.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testRegisterParticipantOpenEvent.txt")))
     return result;
 }
 
@@ -261,56 +245,56 @@ bool testRegisterParticipantOpenEvent()
 bool testUnregisterParticipantOpenEvent_CreatorSiraj()
 {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testUnRegisterParticipantOpenEvent1.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testUnRegisterParticipantOpenEvent1.txt"))
     OpenEvent event1(DateWrap(1, 1, 2000), "event1");
     for (int i = 1; i <= 5; i++) {
         event1.registerParticipant(i * i);
     }
-    event1.printLong(std::cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testUnRegisterParticipantOpenEvent1.txt")))
-    // std::string fileName2 = FILE_PATH + std::string("/your_outputs/testUnRegisterParticipantOpenEvent2.txt");
-    // std::ofstream out2(fileName2, std::ios_base::in | std::ofstream::trunc);
-    // if (!out2.is_open()) {
-    //     throw FileFailed();
-    // }
+    event1.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testUnRegisterParticipantOpenEvent1.txt")))
+    std::string fileName2 = FILE_PATH + std::string("/your_outputs/testUnRegisterParticipantOpenEvent2.txt");
+    std::ofstream out2(fileName2, std::ios_base::in | std::ofstream::trunc);
+    if (!out2.is_open()) {
+        throw FileFailed();
+    }
     for (int i = 0; i <= 25; i++) {
         try {
             event1.unregisterParticipant(i);
         }
         catch (mtm::NotRegistered&) {
-            cout << "NotRegistered" << endl;
+            out2 << "NotRegistered" << endl;
         }
         catch (mtm::InvalidStudent&) {
-            cout << "InvalidStudent" << endl;
+            out2 << "InvalidStudent" << endl;
         }
     }
-    event1.printLong(std::cout);
-    // out2.close();
-    // ASSERT(matchFiles(fileName2, FILE_PATH + std::string("/expected/testUnRegisterParticipantOpenEvent2.txt")))
+    event1.printLong(out2);
+    out2.close();
+    ASSERT(matchFiles(fileName2, FILE_PATH + std::string("/expected/testUnRegisterParticipantOpenEvent2.txt")))
     return result;
 }
 
 bool testCloneOpenEvent() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testCloneOpenEvent.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testCloneOpenEvent.txt"))
     OpenEvent event1(DateWrap(19, 2, 2021), "mtm exam");
     event1.registerParticipant(3);
     try {
         event1.registerParticipant(3);
     }
     catch (mtm::AlreadyRegistered&) {
-        cout << "AlreadyRegistered" << endl;
+        out << "AlreadyRegistered" << endl;
     }
     event1.registerParticipant(2);
     event1.registerParticipant(4);
     event1.registerParticipant(5);
     BaseEvent* eventPtr = event1.clone();
     ASSERT(typeid(*eventPtr).name() == typeid(event1).name());
-    eventPtr->printLong(cout);
-    event1.printLong(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testCloneOpenEvent.txt")))
+    eventPtr->printLong(out);
+    event1.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testCloneOpenEvent.txt")))
     delete eventPtr;
     return result;
 }
@@ -318,56 +302,56 @@ bool testCloneOpenEvent() {
 bool testClosedEventConstructor()
 {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventConstructor.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventConstructor.txt"))
     ClosedEvent event1(DateWrap(1, 1, 2000), "closed event");
     try {
         ClosedEvent event2(DateWrap(0, 1, 2000), "closed event");
     }
     catch (mtm::InvalidDate&) {
-        cout << "InvalidDate" << endl;
+        out << "InvalidDate" << endl;
     }
-    event1.printLong(cout);
-    event1.printShort(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventConstructor.txt")))
+    event1.printLong(out);
+    event1.printShort(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventConstructor.txt")))
     return result;
 }
 
 bool testClosedEventRegisterAndUnRegister() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventRegisterAndUnRegister.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventRegisterAndUnRegister.txt"))
     ClosedEvent event(DateWrap(1, 1, 2000), "AMEEEERCA");
     for (int i = 0; i < 4; i++) {
         try {
             event.addInvitee(i);
         }
         catch (mtm::InvalidStudent&) {
-            cout << "InvalidStudent" << endl;
+            out << "InvalidStudent" << endl;
         }
     }
     try {
         event.addInvitee(2);
     }
     catch (mtm::AlreadyInvited&) {
-        cout << "AlreadyInvited" << endl;
+        out << "AlreadyInvited" << endl;
     }
     for (int i = 1; i < 5; i++) {
         try {
             event.registerParticipant(i);
         }
         catch (mtm::RegistrationBlocked&) {
-            cout << "RegistrationBlocked" << endl;
+            out << "RegistrationBlocked" << endl;
         }
     }
-    event.printLong(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventRegisterAndUnRegister.txt")))
+    event.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventRegisterAndUnRegister.txt")))
     return result;
 }
 
 bool testClosedEventClone() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventClone.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testClosedEventClone.txt"))
     ClosedEvent ev(DateWrap(1, 1, 2000), "ev");
     for (int i = 1; i < 4; i++) {
         ev.addInvitee(i);
@@ -376,28 +360,28 @@ bool testClosedEventClone() {
     ev.unregisterParticipant(3);
     ev.registerParticipant(3);//to check when unregistering if uninviting too
     BaseEvent* evPtr = ev.clone();
-    evPtr->printLong(cout);
-    ev.printLong(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventClone.txt")))
+    evPtr->printLong(out);
+    ev.printLong(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testClosedEventClone.txt")))
     delete evPtr;
     return result;
 }
 
 bool testCustomEventConstructor() {
     bool result = true;
-    // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testCustomEventConstructor.txt"))
+    OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/testCustomEventConstructor.txt"))
     CustomEvent<Filter2> ev(DateWrap(1, 1, 2000), "ev", Filter2());
     try {
         CustomEvent<Filter2> ev2(DateWrap(1, 0, 2000), "ev", Filter2());
     }
     catch (mtm::InvalidDate&) {
-        cout << "InvalidDate" << endl;
+        out << "InvalidDate" << endl;
     }
-    ev.printLong(cout);
-    ev.printShort(cout);
-    // out.close();
-    // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testCustomEventConstructor.txt")))
+    ev.printLong(out);
+    ev.printShort(out);
+    out.close();
+    ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/testCustomEventConstructor.txt")))
     return result;
 }
 
@@ -1046,7 +1030,6 @@ int main(int argc, char* argv[]) {
     }
     return 0;
 }
-
 
 
 

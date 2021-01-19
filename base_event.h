@@ -44,6 +44,11 @@ namespace mtm {
         virtual ~BaseEvent();
         // BaseEvent(const BaseEvent&);
 
+        std::string getName() const
+        {
+            return this->name;
+        }
+
         virtual void registerParticipant(int student_id);
         virtual void unregisterParticipant(int student_id);
         virtual void printShort(std::ostream &output);

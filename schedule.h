@@ -43,7 +43,7 @@ namespace mtm
                         i->printShort(std::cout);
                     }
 
-                    std::cout << "/n";
+                    std::cout << "\n";
                 }
             }
         }
