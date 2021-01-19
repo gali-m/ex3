@@ -55,8 +55,8 @@ namespace mtm
         virtual ~EventContainer();
 
         virtual void add(const BaseEvent& event) = 0;
-        virtual EventIterator begin();
-        virtual EventIterator end();
+        virtual EventIterator begin() const;
+        virtual EventIterator end() const;
     };
 
 }

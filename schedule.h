@@ -21,19 +21,34 @@ namespace mtm
 
         Schedule();
 
-        void addEvents(EventContainer& event_container);
+        void addEvents(const EventContainer& event_container);
         void registerToEvent(DateWrap date, std::string event_name, int student_id);
         void unregisterFromEvent(DateWrap date, std::string event_name, int student_id);
-        void printAllEvents();
-        void printMonthEvents(int month);
+        void printAllEvents() const;
+        void printMonthEvents(int month, int year) const;
 
         template <class Predicate>
-        void printSomeEvents(Predicate predicate_function , bool verbose = false)
+        void printSomeEvents(Predicate predicate_function , bool verbose = false) const
         {
+            for (BaseEvent* i : scheduler)
+            {
+                if(predicate_function(*i))
+                {
+                    if (verbose)
+                    {
+                        i->printLong(std::cout);
+                    }
+                    else
+                    {
+                        i->printShort(std::cout);
+                    }
 
+                    std::cout << "/n";
+                }
+            }
         }
 
-        void printEventDetails(std::string event_name, DateWrap date);
+        void printEventDetails(DateWrap date, std::string event_name) const;
     };
 
 }

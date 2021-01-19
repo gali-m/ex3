@@ -68,7 +68,7 @@ namespace mtm
         }
     }
 
-    EventContainer::EventIterator EventContainer::begin()
+    EventContainer::EventIterator EventContainer::begin() const
     {
         if (this->event_list->event == NULL)
         {
@@ -77,7 +77,7 @@ namespace mtm
         return EventIterator(this->event_list);
     }
     
-    EventContainer::EventIterator EventContainer::end()
+    EventContainer::EventIterator EventContainer::end() const
     {
         if (this->event_list->event == NULL)
         {
