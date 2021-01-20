@@ -13,20 +13,21 @@ namespace mtm
         }
 
         event_node* event_to_add = new event_node();
-        // if(dynamic_cast<OpenEvent*>(&event) != NULL)
-        // {
-        //     event_to_add->event = dynamic_cast<OpenEvent*>(&event);
-        // }
-        // else if(dynamic_cast<ClosedEvent*>(&event) != NULL)
-        // {
-        //     event_to_add->event = dynamic_cast<ClosedEvent*>(&event);
-        // }
-        // else
-        // {
-        //     event_to_add->event = &event;
-        // }
+        if(dynamic_cast<OpenEvent*>(&event) != NULL)
+        {
+            event_to_add->event = (OpenEvent*)(&event);
+        }
+        else if(dynamic_cast<ClosedEvent*>(&event) != NULL)
+        {
+            event_to_add->event = new ClosedEvent((ClosedEvent&)event);
+        }
+        else //if(dynamic_cast<CustomEvent>(&event) != NULL) ??
+        {
+            event_to_add->event = &event;
+            // event_to_add->event = event.clone();
+        }
 
-        event_to_add->event = event.clone();
+        
         event_node* curr_node = this->event_list;
         event_node* next_node = this->event_list;
 
