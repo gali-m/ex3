@@ -34,7 +34,7 @@ namespace mtm
                 {
                     for (std::list<BaseEvent*>::iterator i = this->scheduler.begin(); i != this->scheduler.end(); ++i)
                     {
-                        if (!inserted && ((*i)->date > (*event_iterator).date || ((*i)->date == (*event_iterator).date && (*i)->name.compare((*event_iterator).name) < 0)))
+                        if (!inserted && ((*i)->date > (*event_iterator).date || ((*i)->date == (*event_iterator).date && (*i)->name.compare((*event_iterator).name) > 0)))
                         { // insert by event date & name
                             this->scheduler.insert(i,event_iterator.iterator->event);
                             inserted = true;

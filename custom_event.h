@@ -59,7 +59,7 @@ namespace mtm {
             }
         }
 
-        BaseEvent* clone() const override
+        CustomEvent<CanRegister>* clone() const override
         {
             return new CustomEvent(*this);
         }

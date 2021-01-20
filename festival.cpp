@@ -4,7 +4,7 @@ namespace mtm
 {
     Festival::Festival(const DateWrap date): date(date) {}
 
-    void Festival::add(const BaseEvent& event)
+    void Festival::add(BaseEvent& event)
     {
         DateWrap event_date = getEventDate(event);
         if (event_date != this->date)
@@ -13,8 +13,20 @@ namespace mtm
         }
 
         event_node* event_to_add = new event_node();
-        event_to_add->event = event.clone();
+        // if(dynamic_cast<OpenEvent*>(&event) != NULL)
+        // {
+        //     event_to_add->event = dynamic_cast<OpenEvent*>(&event);
+        // }
+        // else if(dynamic_cast<ClosedEvent*>(&event) != NULL)
+        // {
+        //     event_to_add->event = dynamic_cast<ClosedEvent*>(&event);
+        // }
+        // else
+        // {
+        //     event_to_add->event = &event;
+        // }
 
+        event_to_add->event = event.clone();
         event_node* curr_node = this->event_list;
         event_node* next_node = this->event_list;
 

@@ -45,7 +45,7 @@ namespace mtm
             }
         }
         
-        void add(const BaseEvent& event) override
+        void add(BaseEvent& event) override
         {
             throw NotSupported();
         }

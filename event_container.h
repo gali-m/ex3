@@ -32,6 +32,7 @@ namespace mtm
 
             EventIterator(event_node* event);
             EventIterator(const EventIterator& event_iterator);
+            ~EventIterator();
 	        EventIterator& operator=(const EventIterator& event_iterator);
             EventIterator& operator++();
             BaseEvent& operator*();
@@ -54,7 +55,7 @@ namespace mtm
         EventContainer();
         virtual ~EventContainer();
 
-        virtual void add(const BaseEvent& event) = 0;
+        virtual void add(BaseEvent& event) = 0;
         virtual EventIterator begin() const;
         virtual EventIterator end() const;
     };

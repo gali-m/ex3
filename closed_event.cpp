@@ -95,7 +95,7 @@ namespace mtm {
         }
     }
 
-    BaseEvent* ClosedEvent::clone() const
+    ClosedEvent* ClosedEvent::clone() const
     {
         return new ClosedEvent(*this);
     }

@@ -10,7 +10,7 @@ namespace mtm
 
     public:
         Festival(const DateWrap date);
-        void add(const BaseEvent& event) override;
+        void add(BaseEvent& event) override;
     };
 
 }

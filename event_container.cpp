@@ -17,13 +17,17 @@ namespace mtm
 
     EventContainer::EventIterator::EventIterator(const EventIterator& event_iterator) : iterator(event_iterator.iterator) {}
 
+    EventContainer::EventIterator::~EventIterator()
+    {
+        this->iterator = NULL;
+    }
+
     EventContainer::EventIterator& EventContainer::EventIterator::operator=(const EventIterator& event_iterator)
     {
         if (this == &event_iterator)
         {
             return *this;
         }
-        delete this->iterator;
         this->iterator = event_iterator.iterator;
         return *this;
     }
@@ -70,10 +74,6 @@ namespace mtm
 
     EventContainer::EventIterator EventContainer::begin() const
     {
-        if (this->event_list->event == NULL)
-        {
-            return NULL;
-        }
         return EventIterator(this->event_list);
     }
     
@@ -81,7 +81,7 @@ namespace mtm
     {
         if (this->event_list->event == NULL)
         {
-            return NULL;
+            return EventIterator(this->event_list);
         }
 
         EventIterator event_iterator(this->event_list);
