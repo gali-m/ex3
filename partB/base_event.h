@@ -48,6 +48,10 @@ namespace mtm {
         {
             return this->name;
         }
+        DateWrap getDate() const
+        {
+            return this->date;
+        }
 
         virtual void registerParticipant(int student_id);
         virtual void unregisterParticipant(int student_id);

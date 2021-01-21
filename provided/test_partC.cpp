@@ -110,7 +110,7 @@ struct pred{
     CustomEvent<Filter2> cup = CustomEvent<Filter2>(DateWrap(1,1,2000), "a custom event", Filter2());
 public:
     bool operator()(const BaseEvent& b) const{
-        return b.getName() == op.getName() || cp.getName() == b.getName() || cup.getName() == b.getName();
+        return (b.getName() == op.getName() && b.getDate() == op.getDate()) || (b.getName() == cp.getName() && b.getDate() == cp.getDate()) || (b.getName() == cup.getName() && b.getDate() == cup.getDate());
     }
 };
 
