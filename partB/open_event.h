@@ -2,9 +2,9 @@
 #define OPEN_EVENT_H
 
 #include <iostream>
-#include "date_wrap.h"
+#include "../partA/date_wrap.h"
 #include "base_event.h"
-#include "exceptions.h"
+#include "../partA/exceptions.h"
 
 namespace mtm {
 

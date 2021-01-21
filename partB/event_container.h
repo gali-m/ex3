@@ -2,7 +2,7 @@
 #define EVENT_CONTAINER_H
 
 #include <iostream>
-#include "exceptions.h"
+#include "../partA/exceptions.h"
 #include "base_event.h"
 #include "open_event.h"
 #include "closed_event.h"
@@ -16,7 +16,9 @@ namespace mtm
         event_node* next;
 
         event_node(BaseEvent* event = NULL, event_node* next = NULL);
+        ~event_node();
         event_node(const event_node& event_node);
+
     };
 
 

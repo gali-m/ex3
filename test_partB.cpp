@@ -1,4 +1,3 @@
-
 #include "base_event.h"
 #include "closed_event.h"
 #include "custom_event.h"
@@ -13,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 #include <typeinfo>
-
 
 using std::string;
 using std::cout;
@@ -31,7 +29,7 @@ using mtm::Festival;
 using mtm::RecurringEvent;
 using mtm::OneTimeEvent;
 
-static const std::string FILE_PATH = "../../provided/testOutputs/partB";
+static const std::string FILE_PATH = "../testOutputs/partB";
 
 /**Prints which assertion failed and in which file*/
 #define ASSERT_TEST(expr)                                                         \
@@ -141,6 +139,22 @@ public:
 
 /**__________________________________________________________________________*/
 /** HERE START THE TESTS*/
+// bool testFestivalValgrind() {
+//     bool result = true;
+//     // OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test1SegelProvided.txt"))
+//     // mtm::Festival festival(mtm::DateWrap(21, 10, 2020));
+//     // mtm::OpenEvent open = mtm::OpenEvent(mtm::DateWrap(21, 10, 2020), "Performance 1");
+//     // festival.add(open);
+
+//     mtm::OneTimeEvent<mtm::OpenEvent> one_time(mtm::DateWrap(2, 3, 80),
+//                                                "A long time ago");
+
+//     // printEventsShort(festival, out);
+//     // out.close();
+//     // ASSERT(matchFiles(fileName, FILE_PATH + std::string("/expected/test1SegelProvided.txt")))
+//     return result;
+// }
+
 bool test1SegelProvided() {
     bool result = true;
     OPEN_FILE(out, FILE_PATH + std::string("/your_outputs/test1SegelProvided.txt"))
@@ -976,9 +990,11 @@ bool testHugeEventContainers(){
     return result;
 }
 const int NUMBER_OF_TESTS = 28;
+// const int NUMBER_OF_TESTS = 1;
 
 
 #define TEST_NAMES \
+    /**X(testFestivalValgrind)**/ \
     X(test1SegelProvided) \
     X(test2SegelProvided) \
     X(testConstructorOpenEvent) \

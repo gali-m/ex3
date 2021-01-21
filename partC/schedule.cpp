@@ -7,6 +7,16 @@ namespace mtm
     
         Schedule::Schedule() : scheduler() {}
 
+        Schedule::~Schedule()
+        {
+            while (!this->scheduler.empty())
+            {
+                BaseEvent* event = this->scheduler.front();
+                this->scheduler.pop_front();
+                delete event;
+            }
+        }
+
         void Schedule::addEvents(const EventContainer& event_container)
         {
             for (mtm::EventContainer::EventIterator event_iterator = event_container.begin(); event_iterator != event_container.end(); ++event_iterator)
@@ -20,6 +30,8 @@ namespace mtm
                 }
             }
 
+            BaseEvent* event_to_add;
+
             //add to list
             bool inserted = false;
             for (mtm::EventContainer::EventIterator event_iterator = event_container.begin(); event_iterator != event_container.end(); ++event_iterator)
@@ -27,7 +39,8 @@ namespace mtm
                 inserted = false;
                 if (this->scheduler.empty())
                     { // first event
-                        this->scheduler.push_front(event_iterator.iterator->event);
+                        event_to_add = event_iterator.iterator->event->clone();
+                        this->scheduler.push_front(event_to_add);
                         inserted = true;
                     }
                 else 
@@ -36,14 +49,16 @@ namespace mtm
                     {
                         if (!inserted && ((*i)->date > (*event_iterator).date || ((*i)->date == (*event_iterator).date && (*i)->name.compare((*event_iterator).name) > 0)))
                         { // insert by event date & name
-                            this->scheduler.insert(i,event_iterator.iterator->event);
+                            event_to_add = event_iterator.iterator->event->clone();
+                            this->scheduler.insert(i,event_to_add);
                             inserted = true;
                         }
                     }
                     // last event
                     if (!inserted)
                     {
-                        this->scheduler.push_back(event_iterator.iterator->event);
+                        event_to_add = event_iterator.iterator->event->clone();
+                        this->scheduler.push_back(event_to_add);
                     }
                 }
             }

@@ -2,9 +2,9 @@
 #define CUSTOM_EVENT_H
 
 #include <iostream>
-#include "date_wrap.h"
+#include "../partA/date_wrap.h"
 #include "base_event.h"
-#include "exceptions.h"
+#include "../partA/exceptions.h"
 
 const int MAX_STUDENT_ID = 1234567890;
 const int MIN_STUDENT_ID = 1;

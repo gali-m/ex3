@@ -2,8 +2,8 @@
 #define BASE_EVENT_H
 
 #include <iostream>
-#include "date_wrap.h"
-#include "exceptions.h"
+#include "../partA/date_wrap.h"
+#include "../partA/exceptions.h"
 
 namespace mtm {
     
@@ -48,6 +48,7 @@ namespace mtm {
         {
             return this->name;
         }
+
         DateWrap getDate() const
         {
             return this->date;

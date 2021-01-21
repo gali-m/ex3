@@ -1,14 +1,14 @@
-#include "../partB/base_event.h"
-#include "../partB/closed_event.h"
-#include "../partB/custom_event.h"
-#include "../partA/date_wrap.h"
-#include "../partB/event_container.h"
-#include "../partA/exceptions.h"
-#include "../partB/festival.h"
-#include "../partB/one_time_event.h"
-#include "../partB/open_event.h"
-#include "../partB/recurring_event.h"
-#include "../partC/schedule.h"
+#include "base_event.h"
+#include "closed_event.h"
+#include "custom_event.h"
+#include "date_wrap.h"
+#include "event_container.h"
+#include "exceptions.h"
+#include "festival.h"
+#include "one_time_event.h"
+#include "open_event.h"
+#include "recurring_event.h"
+#include "schedule.h"
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -28,7 +28,7 @@ using mtm::OpenEvent;
 using mtm::ClosedEvent;
 using mtm::CustomEvent;
 
-static const std::string FILE_PATH = "provided/testOutputs/partC";
+static const std::string FILE_PATH = "../testOutputs/partC";
 
 #define ASSERT_TEST(expr, backUpbuf)                                                         \
      do {                                                                                    \

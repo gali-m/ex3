@@ -2,13 +2,13 @@
 #define SCHEDULE_H
 
 #include <iostream>
-#include "exceptions.h"
-#include "date_wrap.h"
-#include "base_event.h"
-#include "open_event.h"
-#include "closed_event.h"
-#include "custom_event.h"
-#include "event_container.h"
+#include "../partA/exceptions.h"
+#include "../partA/date_wrap.h"
+#include "../partB/base_event.h"
+#include "../partB/open_event.h"
+#include "../partB/closed_event.h"
+#include "../partB/custom_event.h"
+#include "../partB/event_container.h"
 #include <list>
 
 namespace mtm 
@@ -20,6 +20,7 @@ namespace mtm
     public:
 
         Schedule();
+        ~Schedule();
 
         void addEvents(const EventContainer& event_container);
         void registerToEvent(DateWrap date, std::string event_name, int student_id);
