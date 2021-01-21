@@ -7,8 +7,13 @@ namespace mtm
 
     // set event_node to be the same as the parameters given
     event_node::event_node(BaseEvent* event, event_node* next): event(event), next(next) {}
+    
+    event_node::~event_node()
+    {
+        delete event;
+    }
 
-    event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
+    // event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
 
 
     //EventIterator methods:
@@ -59,16 +64,14 @@ namespace mtm
     }
     EventContainer::~EventContainer()
     {
-        {
-            event_node* current = this->event_list;
-            event_node* next;
+        event_node* current = this->event_list;
+        event_node* next;
 
-            while (current != NULL) 
-            {
-                next = current->next;
-                delete current;
-                current = next;
-            }
+        while (current != NULL) 
+        {
+            next = current->next;
+            delete current;
+            current = next;
         }
     }
 

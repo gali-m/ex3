@@ -14,9 +14,9 @@ namespace mtm
             std::string name = event_name;
             BaseEvent* event = new EventType(date, name);
 
-            event_node* node = new event_node();
-            node->event = event;
-            node->next = this->event_list;
+            event_node* node = new event_node(event, this->event_list);
+            // node->event = event;
+            // node->next = this->event_list;
 
             this->event_list = node;
         }
