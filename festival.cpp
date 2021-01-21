@@ -15,6 +15,8 @@ namespace mtm
         event_node* event_to_add = new event_node();
         event_to_add->event = event.clone();
 
+        event_node* curr_node = this->event_list;
+        
         if (this->event_list->event == NULL || getEventName(*(curr_node->event)) >= getEventName(event))
         { // first event
             event_to_add->next = this->event_list;
@@ -22,7 +24,6 @@ namespace mtm
             return;
         }
 
-        event_node* curr_node = this->event_list;
         event_node* next_node = curr_node->next;
 
         while (next_node->event != NULL)

@@ -17,7 +17,7 @@ namespace mtm
 
         event_node(BaseEvent* event = NULL, event_node* next = NULL);
         ~event_node();
-        // event_node(const event_node& event_node);
+        event_node(const event_node& event_node);
 
     };
 

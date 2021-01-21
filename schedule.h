@@ -20,6 +20,7 @@ namespace mtm
     public:
 
         Schedule();
+        ~Schedule();
 
         void addEvents(const EventContainer& event_container);
         void registerToEvent(DateWrap date, std::string event_name, int student_id);

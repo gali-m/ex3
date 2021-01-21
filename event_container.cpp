@@ -13,7 +13,7 @@ namespace mtm
         delete event;
     }
 
-    // event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
+    event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
 
 
     //EventIterator methods:
