@@ -475,13 +475,12 @@ bool testPrintVariations(){
         s.registerToEvent(DateWrap(2, 1, 2000), "a closed event", i);
     }
     s.printEventDetails(DateWrap(1,1,2000), "an open event");
-    // try{
+    try{
         s.printEventDetails(DateWrap(2,1,2000), "an open event");
-    // }
-    // catch(mtm::EventDoesNotExist&){
-    //     cout << "EventDoesNotExist" << endl;
-    // }
-    cout << "EventDoesNotExist" << endl;
+    }
+    catch(mtm::EventDoesNotExist&){
+        cout << "EventDoesNotExist" << endl;
+    }
     s.printSomeEvents(funcTrue);
     s.printMonthEvents(1, 2000);
     out.close();

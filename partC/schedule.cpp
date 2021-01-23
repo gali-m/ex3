@@ -140,8 +140,11 @@ namespace mtm
             {// the event to print
                 event->printLong(std::cout);
                 std::cout << NEW_LINE;
+                return;
             }
         }
+        // no such event was found
+        throw EventDoesNotExist();
     }
 
 }
