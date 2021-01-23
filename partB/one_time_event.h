@@ -15,7 +15,7 @@ namespace mtm
             BaseEvent* event = new EventType(date, name);
 
             // add the event to the container
-            event_node* node = new event_node(event, this->event_list);
+            EventNode* node = new EventNode(event, this->event_list);
             this->event_list = node;
         }
 

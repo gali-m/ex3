@@ -11,17 +11,17 @@
 namespace mtm 
 {
     /**
-    * event_node: a structure which implements a list of pointers to BaseEvents.
+    * EventNode: a structure which implements a list of pointers to BaseEvents.
     * contains a constructor that gets a BaseEvent and the next node, a copy constructor and a destructor.
     */
-    struct event_node
+    struct EventNode
     {
         BaseEvent* event;
-        event_node* next;
+        EventNode* next;
 
-        event_node(BaseEvent* event = NULL, event_node* next = NULL);
-        explicit event_node(const event_node& event_node);
-        ~event_node();
+        EventNode(BaseEvent* event = NULL, EventNode* next = NULL);
+        explicit EventNode(const EventNode& event_node);
+        ~EventNode();
     };
 
 
@@ -31,16 +31,16 @@ namespace mtm
 
         /**
         * EventIterator: a class for the iterator of the EventContainer.
-        * contains a constructor that gets a pointer to an event_node, a copy constructor, a destructor 
+        * contains a constructor that gets a pointer to an EventNode, a copy constructor, a destructor 
         * and operators as defined in the instructions.
         */
         class EventIterator
         {
-            event_node* iterator;
+            EventNode* iterator;
 
         public:
 
-            EventIterator(event_node* event);
+            EventIterator(EventNode* event);
             EventIterator(const EventIterator& event_iterator);
             ~EventIterator();
 	        EventIterator& operator=(const EventIterator& event_iterator);
@@ -52,7 +52,7 @@ namespace mtm
 
     protected:
 
-        event_node* event_list;
+        EventNode* event_list;
 
         /**
         * getEventDate: a protected method for getting the date of an event.

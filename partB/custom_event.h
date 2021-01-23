@@ -6,9 +6,6 @@
 #include "base_event.h"
 #include "../partA/exceptions.h"
 
-const int MAX_STUDENT_ID = 1234567890;
-const int MIN_STUDENT_ID = 1;
-
 namespace mtm {
 
     template <class CanRegister>
@@ -21,18 +18,14 @@ namespace mtm {
 
         CustomEvent(const CustomEvent& custom_event): BaseEvent(custom_event)
         {
-            // if(custom_event.students_list != NULL)
-            // {
-            //     this->students_list = new StudentNode(custom_event.students_list);
-            // }
             this->can_register_func = custom_event.can_register_func;
         }
 
         void registerParticipant(int student_id) override
         {
-            is_valid_student(student_id);
+            isValidStudent(student_id);
 
-            bool is_student_in_list_return = is_student_in_list(this->students_list, student_id);
+            bool is_student_in_list_return = isStudentInList(this->students_list, student_id);
             if (is_student_in_list_return)
             {
                 throw AlreadyRegistered();
@@ -44,18 +37,17 @@ namespace mtm {
                 throw RegistrationBlocked();
             }
 
-            // if list is empty
             if(this->students_list == NULL)
-            {
+            { // if list is empty
                 this->students_list = new StudentNode(student_id, NULL);
             }
             else if(this->students_list->student_id > student_id)
-            {
+            { // the first student is bigger
                 this->students_list = new StudentNode(student_id, this->students_list);
             }
             else
             {
-                add_to_students_list(this->students_list, student_id);
+                addToStudentsList(this->students_list, student_id);
             }
         }
 
@@ -63,9 +55,7 @@ namespace mtm {
         {
             return new CustomEvent(*this);
         }
-
     };
-
 }
 
 
