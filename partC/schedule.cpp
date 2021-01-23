@@ -20,12 +20,11 @@ namespace mtm
 
     bool Schedule::containsEvents(const EventContainer& event_container) const
     {
-        for (mtm::EventContainer::EventIterator event_iterator = event_container.begin(); 
-                                                        event_iterator != event_container.end(); ++event_iterator)
+        for (BaseEvent& event_iterator : event_container)
         {
             for (BaseEvent* event : this->scheduler)
             {
-                if (event->date == (*event_iterator).date && (*event_iterator).name.compare(event->name) == EQUAL)
+                if (event->date == event_iterator.date && event_iterator.name.compare(event->name) == EQUAL)
                 {
                     return true;
                 }
@@ -50,34 +49,33 @@ namespace mtm
         BaseEvent* event_to_add;
         bool inserted = false;
 
-        for (mtm::EventContainer::EventIterator event_iterator = event_container.begin(); 
-                                                        event_iterator != event_container.end(); ++event_iterator)
+        for (BaseEvent& event_iterator : event_container)
         {
             inserted = false;
 
             if (this->scheduler.empty())
             { // first event in scheduler
-                event_to_add = (*event_iterator).clone();
+                event_to_add = event_iterator.clone();
                 this->scheduler.push_front(event_to_add);
                 inserted = true;
             }
 
             else 
             {
-                for (std::list<BaseEvent*>::iterator i = this->scheduler.begin(); i != this->scheduler.end(); ++i)
+                for (std::list<BaseEvent*>::iterator it = this->scheduler.begin(); it != this->scheduler.end(); ++it)
                 {
-                    if (!inserted && ((*i)->date > (*event_iterator).date || 
-                        ((*i)->date == (*event_iterator).date && (*i)->name.compare((*event_iterator).name) > EQUAL)))
+                    if (!inserted && ((*it)->date > event_iterator.date || 
+                        ((*it)->date == event_iterator.date && (*it)->name.compare(event_iterator.name) > EQUAL)))
                     { // insert by event date & name
-                        event_to_add = (*event_iterator).clone();
-                        this->scheduler.insert(i,event_to_add);
+                        event_to_add = event_iterator.clone();
+                        this->scheduler.insert(it,event_to_add);
                         inserted = true;
                     }
                 }
                 
                 if (!inserted)
                 {// last event
-                    event_to_add = (*event_iterator).clone();
+                    event_to_add = event_iterator.clone();
                     this->scheduler.push_back(event_to_add);
                 }
             }
