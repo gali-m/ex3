@@ -25,7 +25,7 @@ namespace mtm
 
     EventContainer::EventIterator::~EventIterator()
     {// avoid double freeing - do not delete the event_node
-        this->iterator = nullptr;
+        this->iterator = NULL;
     }
 
     EventContainer::EventIterator& EventContainer::EventIterator::operator=(const EventIterator& event_iterator)
@@ -80,7 +80,7 @@ namespace mtm
         event_node* current = this->event_list;
         event_node* next;
 
-        while (current != nullptr) 
+        while (current != NULL) 
         {
             next = current->next;
             delete current;
@@ -97,7 +97,7 @@ namespace mtm
     {
         EventIterator event_iterator = this->begin();
 
-        while (&(*event_iterator) != nullptr) 
+        while (&(*event_iterator) != NULL) 
         {// go to the last node in the container
             ++event_iterator;
         }
