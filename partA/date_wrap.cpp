@@ -3,12 +3,14 @@
 
 namespace mtm
 {
-    int DateWrap::get_date_parameter(Date date, enum date_parameter date_parameter)
+    // DateWrap private methods:
+
+    int DateWrap::getDateParameter(Date date, enum date_parameter date_parameter)
     {
         int day, month, year;
         bool date_get_return = dateGet(date, &day, &month, &year);
         if(date_get_return == false)
-        {
+        { // faile to get date
             return -1;
         }
 
@@ -25,10 +27,12 @@ namespace mtm
         }
     }
 
+    // DateWrap constructor and destructor methods:
+
     DateWrap::DateWrap(int day, int month, int year)
     {
         this->date = dateCreate(day, month, year);
-        if(this->date == nullptr)
+        if(this->date == NULL)
         {
             throw InvalidDate();
         }
@@ -37,7 +41,7 @@ namespace mtm
     DateWrap::DateWrap(const DateWrap& date_wrap)
     {
         this->date = dateCopy(date_wrap.date);
-        if(this->date == nullptr)
+        if(this->date == NULL)
         {
             throw InvalidDate();
         }
@@ -47,6 +51,25 @@ namespace mtm
     {
         dateDestroy(this->date);
     }
+
+    // DateWrap geters methods:
+
+    int DateWrap::day() const
+    {
+        return getDateParameter(this->date,DAY);
+    }
+
+    int DateWrap::month() const
+    {
+        return getDateParameter(this->date,MONTH);
+    }
+
+    int DateWrap::year() const
+    {
+        return getDateParameter(this->date,YEAR);
+    }
+
+    // DateWrap operators methods:
 
     DateWrap& DateWrap::operator=(const DateWrap& date_wrap)
     {
@@ -58,21 +81,6 @@ namespace mtm
         this->date = tmp_date;
         return *this;
 
-    }
-
-    int DateWrap::day() const
-    {
-        return get_date_parameter(this->date,DAY);
-    }
-
-    int DateWrap::month() const
-    {
-        return get_date_parameter(this->date,MONTH);
-    }
-
-    int DateWrap::year() const
-    {
-        return get_date_parameter(this->date,YEAR);
     }
 
     bool DateWrap::operator==(const DateWrap& date_wrap)

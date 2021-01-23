@@ -21,13 +21,13 @@ namespace mtm
 
             DateWrap date = DateWrap(first_date);
             std::string name = event_name;
-            event_node* curr_event_node = this->event_list;
-            event_node* last_node = this->event_list;
+            EventNode* curr_event_node = this->event_list;
+            EventNode* last_node = this->event_list;
 
             for( int i = 0; i < num_occurrences; i++)
             {// add the events
                 BaseEvent* event = new EventType(date, name);
-                event_node* node = new event_node(event);
+                EventNode* node = new EventNode(event);
 
                 if (i == 0)
                 {// first event
