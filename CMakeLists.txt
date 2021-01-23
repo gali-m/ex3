@@ -43,7 +43,7 @@ link_directories(.)
 # add_executable(progC test_partC.cpp schedule.h schedule.cpp base_event.cpp base_event.h event_container.cpp event_container.h festival.h festival.cpp recurring_event.h recurring_event.cpp one_time_event.h one_time_event.cpp date_wrap.cpp date_wrap.cpp date_wrap.h date.h exceptions.h closed_event.cpp closed_event.h open_event.cpp open_event.h custom_event.cpp custom_event.h)
 # target_link_libraries(progC libdate.a)
 
-# add_executable(progC test_partC.cpp schedule.h schedule.cpp base_event.cpp base_event.h event_container.cpp event_container.h festival.h festival.cpp recurring_event.h recurring_event.cpp one_time_event.h one_time_event.cpp date_wrap.cpp date_wrap.cpp date_wrap.h date.h exceptions.h closed_event.cpp closed_event.h open_event.cpp open_event.h custom_event.cpp custom_event.h)
-# target_link_libraries(progC libdate.a)
+add_executable(progC provided/test_partC.cpp partC/schedule.h partC/schedule.cpp partB/base_event.cpp partB/base_event.h partB/event_container.cpp partB/event_container.h partB/festival.h partB/festival.cpp partB/recurring_event.h partB/one_time_event.h partA/date_wrap.cpp partA/date_wrap.h provided/date.h partA/exceptions.h partB/closed_event.cpp partB/closed_event.h partB/open_event.cpp partB/open_event.h partB/custom_event.cpp partB/custom_event.h)
+target_link_libraries(progC libdate.a)
 
-add_executable(dryprog dry.cpp)
+# add_executable(dryprog dry.cpp)

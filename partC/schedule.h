@@ -13,9 +13,21 @@
 
 namespace mtm 
 {
+    const std::string NEW_LINE = "\n";
+    
     class Schedule
     {
         std::list<BaseEvent*> scheduler;
+
+        /**
+        * containsEvents: a private method for checking whether events are already in the scheduler or not.
+        *
+        * @param event_container - an event conatainer with events we wish to insert to the scheduler.
+        * @return
+        * 	true if at least one of the events in the event container is already in the scheduler (event name + date).
+        *   false otherwise.
+        */
+        bool containsEvents(const EventContainer& event_container) const;
 
     public:
 
@@ -31,20 +43,20 @@ namespace mtm
         template <class Predicate>
         void printSomeEvents(Predicate predicate_function , bool verbose = false) const
         {
-            for (BaseEvent* i : scheduler)
+            for (BaseEvent* event : scheduler)
             {
-                if(predicate_function(*i))
-                {
+                if(predicate_function(*event))
+                {// print this event according to verbose value
                     if (verbose)
                     {
-                        i->printLong(std::cout);
+                        event->printLong(std::cout);
                     }
                     else
                     {
-                        i->printShort(std::cout);
+                        event->printShort(std::cout);
                     }
 
-                    std::cout << "\n";
+                    std::cout << NEW_LINE;
                 }
             }
         }

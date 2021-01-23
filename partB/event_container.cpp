@@ -3,36 +3,38 @@
 
 namespace mtm
 {
-    //event_node methods:
+    // event_node methods:
 
-    // set event_node to be the same as the parameters given
+    // set event_node to be the same as the parameters given, not a copy
     event_node::event_node(BaseEvent* event, event_node* next): event(event), next(next) {}
-    
+
+    event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
+
     event_node::~event_node()
     {
         delete event;
     }
-
-    event_node::event_node(const event_node& event_node): event(event_node.event), next(event_node.next) {}
 
 
     //EventIterator methods:
 
     EventContainer::EventIterator::EventIterator(event_node* event) : iterator(event) {}
 
-    EventContainer::EventIterator::EventIterator(const EventIterator& event_iterator) : iterator(event_iterator.iterator) {}
+    EventContainer::EventIterator::EventIterator(const EventIterator& event_iterator) : 
+                                                                                iterator(event_iterator.iterator) {}
 
     EventContainer::EventIterator::~EventIterator()
-    {
-        this->iterator = NULL;
+    {// avoid double freeing - do not delete the event_node
+        this->iterator = nullptr;
     }
 
     EventContainer::EventIterator& EventContainer::EventIterator::operator=(const EventIterator& event_iterator)
     {
         if (this == &event_iterator)
-        {
+        {// no assignment needed
             return *this;
         }
+
         this->iterator = event_iterator.iterator;
         return *this;
     }
@@ -58,16 +60,27 @@ namespace mtm
 
     //EventContainer methods:
 
+
+    DateWrap EventContainer::getEventDate(const BaseEvent& event)
+    {
+        return event.date;
+    }
+
+    std::string EventContainer::getEventName(const BaseEvent& event)
+    {
+        return event.name;
+    }
+
     EventContainer::EventContainer()
     {
         event_list = new event_node();
     }
     EventContainer::~EventContainer()
-    {
+    {// delete the nodes in the container's list
         event_node* current = this->event_list;
         event_node* next;
 
-        while (current != NULL) 
+        while (current != nullptr) 
         {
             next = current->next;
             delete current;
@@ -82,32 +95,13 @@ namespace mtm
     
     EventContainer::EventIterator EventContainer::end() const
     {
-        if (this->event_list->event == NULL)
-        {
-            return EventIterator(this->event_list);
-        }
+        EventIterator event_iterator = this->begin();
 
-        EventIterator event_iterator(this->event_list);
-        while (event_iterator.iterator->event != NULL) 
-        {
+        while (&(*event_iterator) != nullptr) 
+        {// go to the last node in the container
             ++event_iterator;
         }
-
+        
         return event_iterator;
     }
-
-    DateWrap EventContainer::getEventDate(const BaseEvent& event)
-    {
-        return event.date;
-    }
-
-    std::string EventContainer::getEventName(const BaseEvent& event)
-    {
-        return event.name;
-    }
-
-    // event_node* EventContainer::getIteratorEventnode(EventIterator event_iterator)
-    // {
-    //     return event_iterator.iterator;
-    // }
 }

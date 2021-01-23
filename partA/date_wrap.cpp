@@ -28,7 +28,7 @@ namespace mtm
     DateWrap::DateWrap(int day, int month, int year)
     {
         this->date = dateCreate(day, month, year);
-        if(this->date == NULL)
+        if(this->date == nullptr)
         {
             throw InvalidDate();
         }
@@ -37,7 +37,7 @@ namespace mtm
     DateWrap::DateWrap(const DateWrap& date_wrap)
     {
         this->date = dateCopy(date_wrap.date);
-        if(this->date == NULL)
+        if(this->date == nullptr)
         {
             throw InvalidDate();
         }
