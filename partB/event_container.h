@@ -19,7 +19,7 @@ namespace mtm
         BaseEvent* event;
         EventNode* next;
 
-        EventNode(BaseEvent* event = NULL, EventNode* next = NULL);
+        EventNode(BaseEvent* event = nullptr, EventNode* next = nullptr);
         explicit EventNode(const EventNode& event_node);
         ~EventNode();
     };

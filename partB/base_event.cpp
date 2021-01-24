@@ -11,7 +11,7 @@ namespace mtm {
 
     // BaseEvent methods:
 
-    BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name), students_list(NULL) {}
+    BaseEvent::BaseEvent(DateWrap date, std::string name) : date(date), name(name), students_list(nullptr) {}
 
     BaseEvent::BaseEvent(const BaseEvent& base_event) : date(base_event.date), name(base_event.name) 
     {
@@ -20,21 +20,21 @@ namespace mtm {
 
     StudentNode* BaseEvent::copyStudentsList(StudentNode* students_list)
     {
-        StudentNode* new_students_list = NULL;
+        StudentNode* new_students_list = nullptr;
 
         // students list is not empty
-        if(students_list != NULL)
+        if(students_list != nullptr)
         {
             // copy each node from students_list to new node in new_students_list
             StudentNode* base_event_current = students_list;
-            new_students_list = new StudentNode(base_event_current->student_id, NULL);
+            new_students_list = new StudentNode(base_event_current->student_id, nullptr);
             StudentNode* this_current = new_students_list;
 
             base_event_current = base_event_current->next;
 
-            while (base_event_current != NULL)
+            while (base_event_current != nullptr)
             {
-                this_current->next = new StudentNode(base_event_current->student_id, NULL);
+                this_current->next = new StudentNode(base_event_current->student_id, nullptr);
                 base_event_current = base_event_current->next;
                 this_current = this_current->next;
             }
@@ -48,7 +48,7 @@ namespace mtm {
         StudentNode* next;
 
         // distroy each node in the students list
-        while (current != NULL) 
+        while (current != nullptr) 
         {
             next = current->next;
             delete current;
@@ -58,7 +58,7 @@ namespace mtm {
 
     bool BaseEvent::isStudentInList(StudentNode* students_list, int student_id)
     {
-        while (students_list != NULL)
+        while (students_list != nullptr)
         {
             if (students_list->student_id == student_id)
             {
@@ -90,9 +90,9 @@ namespace mtm {
             throw AlreadyRegistered();
         }
 
-        if(this->students_list == NULL)
+        if(this->students_list == nullptr)
         { // if list is empty
-            this->students_list = new StudentNode(student_id, NULL);
+            this->students_list = new StudentNode(student_id, nullptr);
         }
         else if(this->students_list->student_id > student_id)
         { // the first student is bigger
@@ -109,15 +109,15 @@ namespace mtm {
         isValidStudent(student_id);
 
         StudentNode* current_student = this->students_list;
-        StudentNode* before_current = NULL;
+        StudentNode* before_current = nullptr;
 
-        while (current_student != NULL)
+        while (current_student != nullptr)
         {
             if (current_student->student_id == student_id)
             {
                 StudentNode* node_to_remove = current_student;
 
-                if(before_current == NULL)
+                if(before_current == nullptr)
                 { // remove first node
                     this->students_list = current_student->next;
                 }
@@ -126,7 +126,7 @@ namespace mtm {
                     before_current->next = current_student->next;
                 }
 
-                node_to_remove->next = NULL;
+                node_to_remove->next = nullptr;
                 delete node_to_remove;
                 return;
             }
@@ -149,7 +149,7 @@ namespace mtm {
 
         StudentNode* current_student = this->students_list;
 
-        while (current_student != NULL)
+        while (current_student != nullptr)
         {
             output << current_student->student_id << "\n";
             current_student = current_student->next;
@@ -159,20 +159,20 @@ namespace mtm {
     void BaseEvent::addToStudentsList(StudentNode* students_list, int student_id)
     {
         // the list id empty - add first node
-        if(students_list == NULL)
+        if(students_list == nullptr)
         {
-            students_list = new StudentNode(student_id, NULL);
+            students_list = new StudentNode(student_id, nullptr);
             return;
         }
 
         StudentNode* current = students_list;
-        StudentNode* before_current = NULL;
+        StudentNode* before_current = nullptr;
 
         // find the right place and add
         while (current->student_id < student_id) {
-            if (current->next == NULL)
+            if (current->next == nullptr)
             {
-                current->next = new StudentNode(student_id, NULL);
+                current->next = new StudentNode(student_id, nullptr);
                 return;
             }
             before_current = current;
@@ -180,7 +180,7 @@ namespace mtm {
         }
 
         // add to first node
-        if(before_current == NULL)
+        if(before_current == nullptr)
         {
             students_list = new StudentNode(student_id, current);
             return;

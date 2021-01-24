@@ -12,14 +12,14 @@ namespace mtm {
 
     /**
     * StudentNode: a structure which implements a list of int that represent students.
-    * contains a constructor that gets a int and the next node or put NULL in the next.
+    * contains a constructor that gets a int and the next node or put nullptr in the next.
     */
     struct StudentNode
     {
         int student_id;
         StudentNode* next;
 
-        StudentNode(int student_id, StudentNode* next = NULL);
+        StudentNode(int student_id, StudentNode* next = nullptr);
 
         friend class BaseEvent;
     };
