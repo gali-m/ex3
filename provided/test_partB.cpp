@@ -1,3 +1,4 @@
+
 #include "../partB/base_event.h"
 #include "../partB/closed_event.h"
 #include "../partB/custom_event.h"
@@ -128,7 +129,7 @@ BaseEvent* generate(int i) {
         case 2:
             return new CustomEvent<Filter2>(DateWrap(1, 1, 2000), "a custom event", Filter2());
         default:
-            return NULL;
+            return nullptr;
     }
 }
 
@@ -1028,3 +1029,4 @@ int main(int argc, char* argv[]) {
     }
     return 0;
 }
+

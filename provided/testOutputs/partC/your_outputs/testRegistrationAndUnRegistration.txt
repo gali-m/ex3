@@ -1,9 +1,9 @@
-InvalidStudent
+an exception has occurred
 EventDoesNotExist
-InvalidStudent
+an exception has occurred
 EventDoesNotExist
 EventDoesNotExist
-InvalidStudent
+an exception has occurred
 an open event 2/1/2000
 
 an open event 5/1/2000

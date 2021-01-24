@@ -119,7 +119,7 @@ BaseEvent* generate(int i) {
         case 2:
             return new CustomEvent<Filter2>(DateWrap(1, 1, 2000), "a custom event", Filter2());
         default:
-            return NULL;
+            return nullptr;
     }
 }
 
@@ -411,8 +411,8 @@ bool testRegistrationAndUnRegistration(){
     s.addEvents(recurringEvent);
     try{
         s.registerToEvent(DateWrap(2,1,2000), "an open event", 0);
-    }catch(mtm::InvalidStudent&){
-        cout << "InvalidStudent" << endl;
+    }catch(mtm::Exception&){
+        cout << "an exception has occurred" << endl;
     }
     try{
         s.registerToEvent(DateWrap(3,1,2000), "an open event", 1);
@@ -421,8 +421,8 @@ bool testRegistrationAndUnRegistration(){
     }
     try{
         s.registerToEvent(DateWrap(3,1,2000), "an open event", 0);
-    }catch(mtm::EventDoesNotExist&){
-        cout << "InvalidStudent" << endl;
+    }catch(mtm::Exception&){
+        cout << "an exception has occurred" << endl;
     }
     s.registerToEvent(DateWrap(2,1,2000), "an open event", 1);
     s.registerToEvent(DateWrap(2,1,2000), "an open event", 2);
@@ -441,8 +441,8 @@ bool testRegistrationAndUnRegistration(){
     }
     try{
         s1.registerToEvent(DateWrap(1,1,2000), "an open event", 0);
-    }catch(mtm::EventDoesNotExist&){
-        cout << "InvalidStudent" << endl;
+    }catch(mtm::Exception&){
+        cout << "an exception has occurred" << endl;
     }
     s1.addEvents(recurringEvent);
     s1.printAllEvents();
@@ -477,8 +477,7 @@ bool testPrintVariations(){
     s.printEventDetails(DateWrap(1,1,2000), "an open event");
     try{
         s.printEventDetails(DateWrap(2,1,2000), "an open event");
-    }
-    catch(mtm::EventDoesNotExist&){
+    }catch(mtm::EventDoesNotExist&){
         cout << "EventDoesNotExist" << endl;
     }
     s.printSomeEvents(funcTrue);
