@@ -37,9 +37,9 @@ namespace mtm {
                 throw RegistrationBlocked();
             }
 
-            if(this->students_list == NULL)
+            if(this->students_list == nullptr)
             { // if list is empty
-                this->students_list = new StudentNode(student_id, NULL);
+                this->students_list = new StudentNode(student_id, nullptr);
             }
             else if(this->students_list->student_id > student_id)
             { // the first student is bigger

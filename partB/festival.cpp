@@ -17,7 +17,7 @@ namespace mtm
 
         EventNode* curr_node = this->event_list;
         
-        if (this->event_list->event == NULL || getEventName(*(curr_node->event)) >= getEventName(event))
+        if (this->event_list->event == nullptr || getEventName(*(curr_node->event)) >= getEventName(event))
         { // insert as the first event
             event_to_add->next = this->event_list;
             this->event_list = event_to_add;
@@ -26,7 +26,7 @@ namespace mtm
 
         EventNode* next_node = curr_node->next;
 
-        while (next_node->event != NULL)
+        while (next_node->event != nullptr)
         { // insert by event name
             if (getEventName(*(next_node->event)) >= getEventName(event))
             { 
